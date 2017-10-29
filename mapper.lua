@@ -180,6 +180,11 @@ function mapper:name(room_name)
     self:info("Renamed room "..self.curr_room.id.." to '"..room_name.."'")
 end
 
+--[[
+    This will fire whenever the user sends a command, if it is a known
+    standard direction we'll create a new room based on the coordinates
+    of the previous room and the direction traveled.
+--]]
 function mapper:onSysDataSendRequest(_, cmd)
     if not self:isStandardDirection(cmd) then return end
     cmd = self:normalizeDirection(cmd)
@@ -210,6 +215,10 @@ function mapper:onSysDataSendRequest(_, cmd)
     }
 end
 
+--[[
+    This needs to be fired by a a client trigger. The format of the
+    trigger depends on the actual game.
+--]]
 function mapper:onRoomData(_, room_name, area_name)
     self.room_name = room_name
     self.area_name = area_name
