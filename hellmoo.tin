@@ -33,5 +33,5 @@
 #macro {\eOq} {sw}
 #macro {\eOt} {w} 
 #macro {\eOw} {nw} 
-#macro {\eOS} {u} 
+#macro {\eOS} {u}
 #macro {\eOl} {d}
