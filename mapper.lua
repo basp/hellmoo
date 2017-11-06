@@ -318,13 +318,14 @@ function mapper:onSysDataSendRequest(_, cmd)
     local pz = self.prev_room.coords.z
     local nx, ny, nz = coordmap[cmd](px, py, pz)
 
-    -- See if we can find the next room id by its existing exits
     local existing_exit = prev_room_exits[exitmap[cmd]]
+    -- See if we can find the next room id by its existing exits...
     if existing_exit and not self.nofollow then
         local name = getRoomName(existing_exit)
         self.log:debug("Room found on existing exit '"..exitmap[cmd].."' to '"..name.."' ("..existing_exit..")")
         room_id = existing_exit
     else
+        -- otherwise just to try to grab a room id on projected location.
         room_id = select(2, next(getRoomsByPosition(area_id, nx, ny, nz))) 
     end
 
