@@ -6,7 +6,7 @@ mapper.log = {}
 
 mapper.flags = {
     static = true,
-    nofollow = false,
+    nofollow = true,
 }
 
 local function notify(color, level, msg)
