@@ -23,7 +23,9 @@ end
 function ticker:_rep(name, seconds, func)
     if not self.tickers[name] then return end
     func()
-    local id = tempTimer(seconds, function () self:_rep(name, seconds, func) end)
+    local id = tempTimer(seconds, function () 
+        self:_rep(name, seconds, func) 
+    end)
     self.tickers[name] = id
     return id
 end
