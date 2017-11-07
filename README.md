@@ -1,16 +1,36 @@
-## mudlet mapper
+# hellmoo utils for mudlet
+This is a collection of **Mudlet** modules that are intended to be used in **HellMOO** but might be useful more generally for other MUD/MOO style games as well.
+
+## tickers
+The ticker module is a small utility package that makes it a lot easier to create ad-hoc repeating timers. Usually, when you want to have a persistent timer in **Mudlet** you need to go into the timer UI and click around to create one. Not only is this annoying but also it tends to draw your focus away from what is happening in game.
+
+In the **TinTin** client you can create so-called *tickers* that are the equivalent of persistent timers in **Mudlet**. However, you can create and kill them with basic commands. This module implements the basic *ticker* functionality as found in **TinTin++** for **Mudlet**.
+
+### reference
+The ticker API is very simple.
+
+* `:create(name, command, seconds)` creates a new ticker that executes with an interval of `seconds`
+* `:destroy(name)` destroys the ticker named `name`
+* `:list()` lists all active tickers
+
+### quick start
+1. Create a new ticker by executing `lua ticker:create("foo", "look", 30)` (you should get a message that a new ticker has been created)
+2. Inspect the currently running tickers by executing `lua ticker:list()` (this should show you the ticker you created in the previous step)
+3. Try to create a ticker with the same name `lua ticker:create("foo", "inv", 16)` and you should get a message saying there's already a ticker with that name.
+4. Destroy the ticker with `lua ticker:destroy("foo")` and you'll get a message saying that the ticker is no more.
+
+## mapper
 This mapper is inspired by the **TinTin++** mapper which works really well for HellMOO. I wanted something similar for **Mudlet** so I started to translate the API to Lua.
+
+**HellMOO** already includes fabulous maps so why would you need this is the first place? There's multiple reasons. The client map is a lot faster than using `lmap` for instance. You can easily annotate the client map with meta-data that is customized to your playstyle. You can share maps and tweak their layout and also you can correlate various aspects such as paths to named rooms and for example associating commands with rooms upon entry and/or exit. 
+
+There's a lot of things you can do with a client map that you can't do with a server side map. And the goal of this mapping script is to be a bridge between **HellMOO** and the **Mudlet** mapper API.
 
 ### notes
 * This mapper has been tailored to work with **HellMOO** although some parts of it might be usable for more generic mappers.
 * Every room in **HellMOO** belongs to an *area* and the **Mudlet** mapper operates on areas as well. I decided to keep this mapping *one-to-one* as far as the *dynamic mapping* capabilities are concerned as it seems to work well.
 * The room coordinates you will get from the GPS in game will **NOT** correspond to the coordinates of rooms in the map. It's practically impossible to try and keep a reasonable mapping and for all the use-cases I have it's simply not required.
 * Mapping still involves a lot of manual attention. It's not simply a matter of blazing around and have the script do its thing, you'll have to pay attention and issue commands and tweak the map as you go.
-
-### introduction
-**HellMOO** already includes fabulous maps so why would you need this is the first place? There's multiple reasons. The client map is a lot faster than using `lmap` for instance. You can easily annotate the client map with meta-data that is customized to your playstyle. You can share maps and tweak their layout and also you can correlate various aspects such as paths to named rooms and for example associating commands with rooms upon entry and/or exit. 
-
-There's a lot of things you can do with a client map that you can't do with a server side map. And the goal of this mapping script is to be a bridge between **HellMOO** and the **Mudlet** mapper API.
 
 ### quick start
 Note that if you're gonna try this you'll need a trigger to fire the `onRoomData` event, check below for more info on that. Also, you'll need to `@prefs showmap is off` for this trigger to work. And don't worry, mapping is much more exciting without the automap that is provided by the game. You can always use `lmap` to get your bearings.
