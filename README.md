@@ -29,7 +29,7 @@ action:create([[^The thing dies!$]], [[send("cut skin from thing")]])
 ### todo
 It should be possible to create actions that *capture* groups of characters and re-use them in the code like this:
 ```
-action:create([[^the %1 treeman attacks you!$]], [[send("headbut"); send("pow")]])
+action:create([[^the %1 treeman dies!$]], [[send("cut bark from %1")]])
 ```
 
 ## tickers
