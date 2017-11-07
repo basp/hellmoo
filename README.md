@@ -19,6 +19,13 @@ The ticker API is very simple.
 3. Try to create a ticker with the same name `lua ticker:create("foo", "inv", 16)` and you should get a message saying there's already a ticker with that name.
 4. Destroy the ticker with `lua ticker:destroy("foo")` and you'll get a message saying that the ticker is no more.
 
+### aliases
+Although you can interact with the low level `ticker` API using the `lua` alias it's much more convenient to use the ticker aliases for this.
+
+* `ticker <name> <command> <interval>` creates a new ticker
+* `unticker <name>` destroys an existing ticker
+* `tickers` lists all the running tickers
+
 ## mapper
 This mapper is inspired by the **TinTin++** mapper which works really well for HellMOO. I wanted something similar for **Mudlet** so I started to translate the API to Lua.
 
