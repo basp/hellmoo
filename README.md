@@ -26,6 +26,12 @@ Note that (in contrast to *tickers*) the code is raw Lua code to be executed. So
 action:create([[^The thing dies!$]], [[send("cut skin from thing")]])
 ```
 
+### todo
+It should be possible to create actions that *capture* groups of characters and re-use them in the code like this:
+```
+action:create([[^the %1 treeman attacks you!$]], [[send("headbut"); send("pow")]])
+```
+
 ## tickers
 The ticker module is a small utility package that makes it a lot easier to create ad-hoc repeating timers. Usually, when you want to have a persistent timer in **Mudlet** you need to go into the timer UI and click around to create one. Not only is this annoying but also it tends to draw your focus away from what is happening in game.
 
