@@ -37,7 +37,7 @@ The ticker module is a small utility package that makes it a lot easier to creat
 
 In the **TinTin++** client you can create so-called *tickers* that are the equivalent of persistent timers in **Mudlet**. However, you can create and kill them with basic commands. This module implements the basic *ticker* functionality as found in **TinTin++** for **Mudlet**.
 
-Note that (in contrast to *actions*) you *CANNOT* send arbirtrary Lua code. The `command` parameter will be send to the game using the `send` function so of the game cannot interpret your command your *ticker* will be useless.
+Note that (in contrast to *actions*) you **CANNOT** send arbirtrary Lua code. The `command` parameter will be send to the game using the `send` function so of the game cannot interpret your command your *ticker* will be useless.
 
 ### reference
 * `:create(name, command, seconds)` creates a new ticker that executes with an interval of `seconds`
