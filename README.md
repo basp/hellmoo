@@ -21,6 +21,11 @@ The `action` module tries to remedy this by offering you a convenient way to set
 * `:destroy(pattern)` destroys the *action* associated with `pattern`
 * `:list()` lists all action definitions
 
+Note that (in contrast to *tickers*) the code is raw Lua code to be executed. So if you wanna send commands to the game you'll have to use the `send` function as demonstrated below:
+```
+action:create([[^The thing dies!$]], [[send("cut skin from thing")]])
+```
+
 ## tickers
 The ticker module is a small utility package that makes it a lot easier to create ad-hoc repeating timers. Usually, when you want to have a persistent timer in **Mudlet** you need to go into the timer UI and click around to create one. Not only is this annoying but also it tends to draw your focus away from what is happening in game.
 
