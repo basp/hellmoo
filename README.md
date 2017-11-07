@@ -69,6 +69,16 @@ Note that **Mudlet** has a nasty tendency of crashing when deleting rooms and es
 
 ### firing the `onRoomData` event
 This mapper is trying to be reasonably generic (although still written for **HellMOO**) and so it uses an event to update some essential parts of the mapper's internal state: the room and area name. These two pieces are not only important but we can capture them automatically as well with a **Mudlet** *regex* trigger that looks like this:
+```
+^(.*) \((.*)\)   (\d+):(\d+)(am|pm)(.*)$
+```
+
+And then we can fire event with the following code:
+```
+local room_name = matches[2]
+local area_name = matches[3]
+raiseEvent("onRoomData", room_name, area_name)
+```
 
 ### reference
 Below is a reference of the raw Lua mapper API. Usually, you'll make use of *aliases* to interact with the mapper.
