@@ -45,3 +45,23 @@ This mapper is trying to be reasonably generic (although still written for **Hel
 
 ### reference
 Below is a reference of the raw Lua mapper API. Usually, you'll make use of *aliases* to interact with the mapper.
+
+* `:init()` initialize the mapper and setup anonymous event handlers
+* `:status()` show the global mapper flags
+* `:here()` center the map on the current room
+* `:off()` disable dynamic mapping
+* `:on()` enable dynamic mapping
+* `:set(flag, value)` set the value of a global mapping flag
+* `:create()` create a new map for the current area
+* `:info()` show known map info about the current room
+* `:jump(x, y, z)` center the map on `x`, `y`, `z` position
+* `:move(dir)` move the map in standard direction `dir`
+* `:goto(id)` center the map on room with id `id`
+* `:name(name)` rename the current room to `name`
+* `:area(name)` move the room to area `name`
+* `:link(dir, to, both)` link the current room to room `to` in direction `dir` (specify `both` if you want to create a reverse link as well)
+* `:unlink(dir, both)` unlink the room in direction `dir` (specify `both` if you want to unlink the reverse link as well)
+* `:areas()` list all known areas
+* `:list(name)` list all rooms in area `name` (uses current area by default)
+* `:delete(dir)` delete room in direction `dir`
+* `:destroy()` destroys the map for the current area (tends to crash Mudlet)
