@@ -6,18 +6,27 @@ The easiest way to load the scripts is to make use of the `lua` alias (that just
 ```
 lua dofile("/where/you/cloned/mapper.lua")
 lua dofile("/where/you/cloned/ticker.lua")
+lua dofile("/where/you/cloned/action.lua")
 ```
 
 To check if they loaded correctly you can execute `lua mapper` and `lua ticker`. This will just display the definitions of the `mapper` and `ticker` objects respectively or nothing (and an error in the **Mudlet** error and debug windows) in case things went wrong.
 
+## actions
+Setting up *triggers* or *actions* in **Mudlet** is not that easy. The Lua API is not bad but especially with *temp triggers* it's easy to lose track of them. It often happens that you're doing things in game and you suddenly think of a cool trigger to setup. This is not that easy in **Mudlet** as it involves going into the script UI or use the somewhat cumbersome `lua` command to execute bare Lua code and interface with the API from your command line.
+
+The `action` module tries to remedy this by offering you a convenient way to setup ad-hoc triggers, keep track of them and destroy them once they are no longer needed. This module is inspired by **TinTin++** as well.
+
+### reference
+* `:create(pattern, code)` creates a new *action* to execude `code` on the `pattern` regexp.
+* `:destroy(pattern)` destroys the *action* associated with `pattern`
+* `:list()` lists all action definitions
+
 ## tickers
 The ticker module is a small utility package that makes it a lot easier to create ad-hoc repeating timers. Usually, when you want to have a persistent timer in **Mudlet** you need to go into the timer UI and click around to create one. Not only is this annoying but also it tends to draw your focus away from what is happening in game.
 
-In the **TinTin** client you can create so-called *tickers* that are the equivalent of persistent timers in **Mudlet**. However, you can create and kill them with basic commands. This module implements the basic *ticker* functionality as found in **TinTin++** for **Mudlet**.
+In the **TinTin++** client you can create so-called *tickers* that are the equivalent of persistent timers in **Mudlet**. However, you can create and kill them with basic commands. This module implements the basic *ticker* functionality as found in **TinTin++** for **Mudlet**.
 
 ### reference
-The ticker API is very simple.
-
 * `:create(name, command, seconds)` creates a new ticker that executes with an interval of `seconds`
 * `:destroy(name)` destroys the ticker named `name`
 * `:list()` lists all active tickers
