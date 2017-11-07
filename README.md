@@ -92,3 +92,22 @@ Below is a reference of the raw Lua mapper API. Usually, you'll make use of *ali
 * `:list(name)` list all rooms in area `name` (uses current area by default)
 * `:delete(dir)` delete room in direction `dir`
 * `:destroy()` destroys the map for the current area (tends to crash Mudlet)
+
+### aliases
+It's much easier to interact with the mapper by using the alias listed below.
+
+* `map on` enables the dynamic mapper
+* `map off` disables the dynamic mapper
+* `map link <direction> to <id>` creates a new exit from the current room to `id` in direction `direction`
+* `map unlink <direct>` removes an exit from the current room
+* `map goto <id>` positions the map on room with id `id`
+* `map info` shows known mapper information about the current room
+* `map name` renames the current room
+* `map status` shows the status of the mapper
+* `map list [area]` lists all rooms for area (or current area if none specified)
+* `map init` initializes the mapper
+
+There's also two utility aliases that manipulate in-game settings to show and hide the map.
+
+* `map show` is a utility to show the in-game map
+* `map hide` does the opposite of `map show`
