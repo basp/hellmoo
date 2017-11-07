@@ -1,6 +1,15 @@
 # hellmoo utils for mudlet
 This is a collection of **Mudlet** modules that are intended to be used in **HellMOO** but might be useful more generally for other MUD/MOO style games as well.
 
+# setup
+The easiest way to load the scripts is to make use of the `lua` alias (that just executes Lua code) and the `dofile` function.
+```
+lua dofile("/where/you/cloned/mapper.lua")
+lua dofile("/where/you/cloned/ticker.lua")
+```
+
+There are no dependencies, you can use/load them both together or individually.
+
 ## tickers
 The ticker module is a small utility package that makes it a lot easier to create ad-hoc repeating timers. Usually, when you want to have a persistent timer in **Mudlet** you need to go into the timer UI and click around to create one. Not only is this annoying but also it tends to draw your focus away from what is happening in game.
 
