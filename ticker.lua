@@ -1,6 +1,5 @@
 ticker = ticker or {}
 
-ticker.group_name = "tickers"
 ticker.tickers = ticker.tickers or {}
 
 local function notify(color, msg)
