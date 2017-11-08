@@ -175,33 +175,42 @@ There's also two utility aliases that manipulate in-game settings to show and hi
 * `map hide` does the opposite of `map show`
 
 ## aliases
-Below is a definiton of all the aliases I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
+Below is a definiton of all the triggers and aliases I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
 
-### highlights
-#### rad-q
+### triggers
 * `orange halo` (substring)
-
-#### page
 * `From your wristpad:` (begin of line substring)
-
-#### burned-out
 * `(burned(-out)?)` (perl regex)
-
-#### musk
 * `Your stench recedes a little.` (substring)
-
-#### radiation sickness
 * `^You wince and shrug off the radiation sickness.$` (perl regex)
 
 ### fishing
 #### jerk
-* `^You feel a tug on your line.$` (perl regex)
+`^You feel a tug on your line.$` (perl regex)
 ```
 send("jerk pole")
 ```
 
 #### reel
-* `^(.*) The (.*) pulls (.*) out on the line.$` (perl regex)
+`^(.*) The (.*) pulls (.*) out on the line.$` (perl regex)
 ```
 send("reel")
 ```
+
+### barks
+#### dead tree
+* `^The (.*) treeman creaks and groans, falling apart into a pile of kindling.$` (perl regex)
+* `^The body of (.*) treeman's limbs twitch feebly; it coughs weakly, and moves no more.$` (perl regex)
+```
+local t = matches[2]
+send("cut bark from "..t)
+```
+
+#### cut bark
+* `^(.*) hacks a mossy bark off the body of (.*) treeman.$`
+```
+send("put bark in straw")
+```
+
+### aliases
+TODO
