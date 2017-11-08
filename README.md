@@ -174,6 +174,21 @@ There's also two utility aliases that manipulate in-game settings to show and hi
 * `map show` is a utility to show the in-game map
 * `map hide` does the opposite of `map show`
 
-## triggers
-Below is a definiton of all the triggers I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
+## aliases
+Below is a definiton of all the aliases I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
 
+### highlights
+#### rad-q
+* `orange halo` (substring)
+
+#### page
+* `From your wristpad:` (begin of line substring)
+
+#### burned-out
+* `(burned(-out)?)` (perl regex)
+
+#### musk
+* `Your stench recedes a little.` (substring)
+
+### radiation sickness
+* `^You wince and shrug off the radiation sickness.$` (perl regex)
