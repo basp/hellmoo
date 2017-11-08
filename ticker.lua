@@ -33,7 +33,7 @@ function ticker:create(name, code, seconds)
     end
 
     self:_c(name, code, seconds)
-    self:info(string.format("%s now executes '%s' every %d seconds", name, code, seconds))
+    self:info(string.format("Ok, %s now executes '%s' every %d seconds", name, code, seconds))
 end
 
 function ticker:list()
@@ -48,7 +48,7 @@ function ticker:destroy(name)
     local id = self.tickers[name].id
     killTimer(id)
     self.tickers[name] = nil
-    self:info(string.format("%s is no longer a ticker", name))
+    self:info(string.format("Ok, %s is no longer a ticker", name))
 end
 
 function ticker:_c(name, code, seconds)
