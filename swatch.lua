@@ -27,8 +27,15 @@ function swatch:list()
 end
 
 function swatch:create()
+    local id = table.getn(self.swatches) + 1
+    self.swatches[id] = os.time()
+end
 
+function swatch:duration(id)
+    local t = os.time()
+    return t - self.swatches[id]
 end
 
 function swatch:destroy(id)
-end
+    self.swatches = nil
+end 

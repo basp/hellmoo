@@ -11,6 +11,15 @@ lua dofile("/where/you/cloned/action.lua")
 
 To check if they loaded correctly you can execute `lua mapper` and `lua ticker`. This will just display the definitions of the `mapper` and `ticker` objects respectively or nothing (and an error in the **Mudlet** error and debug windows) in case things went wrong.
 
+## swatches
+A swatch is just a stopwatch, a mechanism to keep track of time.
+
+### reference
+* `:create()` create a new swatch, it starts running immediately
+* `:list()` list all running swatches
+* `:duration(id)` get the duraction in seconds since you started the swatch
+* `:destroy(id)` destroy the swatch
+
 ## delays
 A delay is equivalent to setting up a `tempTimer` in **Mudlet** but just a little bit easier to work with.
 
