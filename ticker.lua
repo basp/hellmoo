@@ -28,10 +28,9 @@ end
 
 function ticker:create(name, code, seconds)
     if self.tickers[name] then
-        self:debug(string.format("There's alreay a ticker named '%s'", name))
-        return
+        self:debug(string.format("Killing existing ticker %s", name))
+        killTimer(self.tickers[name].id)
     end
-
     self:_c(name, code, seconds)
     self:info(string.format("Ok, %s now executes '%s' every %d seconds", name, code, seconds))
 end
@@ -54,7 +53,9 @@ end
 function ticker:_c(name, code, seconds)
     local f = function()
         eval(code)
-        if self.tickers[name] then self:_c(name, code, seconds) end
+        if self.tickers[name] then 
+            self:_c(name, code, seconds) 
+        end
     end
     self.tickers[name] = {
         code = code,

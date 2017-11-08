@@ -11,6 +11,14 @@ lua dofile("/where/you/cloned/action.lua")
 
 To check if they loaded correctly you can execute `lua mapper` and `lua ticker`. This will just display the definitions of the `mapper` and `ticker` objects respectively or nothing (and an error in the **Mudlet** error and debug windows) in case things went wrong.
 
+## delays
+A delay is equivalent to setting up a `tempTimer` in **Mudlet** but just a little bit easier to work with.
+
+### reference
+* `:create(seconds, code)` will create a new delay that executes `code` after `seconds` seconds.
+* `:destroy(id)` destroy the suspended delay with id `id` (use `:list()` to find out the value for `id`)
+* `:list()` lists information about all suspensded delays
+
 ## actions
 Setting up *triggers* or *actions* in **Mudlet** is not that easy. The Lua API is not bad but especially with *temp triggers* it's easy to lose track of them. It often happens that you're doing things in game and you suddenly think of a cool trigger to setup. This is not that easy in **Mudlet** as it involves going into the script UI or use the somewhat cumbersome `lua` command to execute bare Lua code and interface with the API from your command line.
 
