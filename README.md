@@ -174,10 +174,11 @@ There's also two utility aliases that manipulate in-game settings to show and hi
 * `map show` is a utility to show the in-game map
 * `map hide` does the opposite of `map show`
 
-## aliases
+## overview
 Below is a definiton of all the triggers and aliases I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
 
-### triggers
+## triggers
+### highlights
 * `orange halo` (substring)
 * `From your wristpad:` (begin of line substring)
 * `(burned(-out)?)` (perl regex)
