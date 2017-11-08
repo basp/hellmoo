@@ -26,14 +26,17 @@ function swatch:list()
     display(self.swatches)
 end
 
-function swatch:create()
+function swatch:create(message)
     local id = table.getn(self.swatches) + 1
-    self.swatches[id] = os.time()
+    self.swatches[id] = {
+        start = os.time(),
+        message = message,
+    }
 end
 
 function swatch:duration(id)
     local t = os.time()
-    return t - self.swatches[id]
+    return t - self.swatches[id].start
 end
 
 function swatch:destroy(id)
