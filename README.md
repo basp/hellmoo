@@ -7,6 +7,10 @@ The easiest way to load the scripts is to make use of the `lua` alias (that just
 lua dofile("/where/you/cloned/mapper.lua")
 lua dofile("/where/you/cloned/ticker.lua")
 lua dofile("/where/you/cloned/action.lua")
+lua dofile("/where/you/cloned/delay.lua")
+lua dofile("/where/you/cloned/swatch.lua")
+lua dofile("/where/you/cloned/utils.lua")
+...
 ```
 
 To check if they loaded correctly you can execute `lua mapper` and `lua ticker`. This will just display the definitions of the `mapper` and `ticker` objects respectively or nothing (and an error in the **Mudlet** error and debug windows) in case things went wrong.
