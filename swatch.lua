@@ -37,5 +37,5 @@ function swatch:duration(id)
 end
 
 function swatch:destroy(id)
-    self.swatches = nil
+    self.swatches[id] = nil
 end 
