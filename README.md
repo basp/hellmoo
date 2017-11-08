@@ -190,5 +190,16 @@ Below is a definiton of all the aliases I currently use, I don't like the Mudlet
 #### musk
 * `Your stench recedes a little.` (substring)
 
-### radiation sickness
+#### radiation sickness
 * `^You wince and shrug off the radiation sickness.$` (perl regex)
+
+### fishing
+* `^You feel a tug on your line.$` (perl regex)
+```
+send("jerk pole")
+```
+
+* `^(.*) The (.*) pulls (.*) out on the line.$` (perl regex)
+```
+send("reel")
+```
