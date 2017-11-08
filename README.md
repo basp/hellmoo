@@ -160,3 +160,7 @@ There's also two utility aliases that manipulate in-game settings to show and hi
 
 * `map show` is a utility to show the in-game map
 * `map hide` does the opposite of `map show`
+
+## triggers
+Below is a definiton of all the triggers I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
+

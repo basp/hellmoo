@@ -7,6 +7,16 @@ local function notify(color, msg)
     cecho("<"..color..">[ ACTION ] <reset>"..msg.."\n")
 end
 
+local function eval(code)
+    local f, e = loadstring("return "..code)
+    if not f then
+        f, e = assert(loadstring(code))
+    end
+    
+    local r = f()
+    if r ~= nil then display(r) end
+end
+
 function action.log:info(msg)
     local color = "yellow"
     notify(color, msg)
@@ -51,3 +61,6 @@ function action:list()
         cecho(string.format("%5d %-32s %s\n", act.id, pat, act.code))
     end
 end
+
+-- send("say Hi %1")       => send("say Hi "..matches[2])
+-- send("say Hi %1 you!")  => send("say Hi "..matches[2].." you!")
