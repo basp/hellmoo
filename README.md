@@ -2,7 +2,7 @@
 This is a collection of **Mudlet** modules that are intended to be used in **HellMOO** but might be useful more generally for other MUD/MOO style games as well.
 
 # setup
-The easiest way to load the scripts is to make use of the `lua` alias (that just executes Lua code) and the `dofile` function. There are no dependencies, you can use/load them both together or individually.
+The easiest way to load the scripts is to make use of the `lua` alias (that just executes Lua code) and the `dofile` function. There are no dependencies, you can use/load them together or individually.
 ```
 lua dofile("/where/you/cloned/mapper.lua")
 lua dofile("/where/you/cloned/ticker.lua")
