@@ -194,11 +194,13 @@ Below is a definiton of all the aliases I currently use, I don't like the Mudlet
 * `^You wince and shrug off the radiation sickness.$` (perl regex)
 
 ### fishing
+#### jerk
 * `^You feel a tug on your line.$` (perl regex)
 ```
 send("jerk pole")
 ```
 
+#### reel
 * `^(.*) The (.*) pulls (.*) out on the line.$` (perl regex)
 ```
 send("reel")
