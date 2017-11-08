@@ -6,6 +6,16 @@ local function notify(color, msg)
     cecho("<"..color..">[ TICKER ] <reset>"..msg.."\n")
 end
 
+local function eval(code)
+    local f, e = loadstring("return "..code)
+    if not f then
+        f, e = assert(loadstring(code))
+    end
+    
+    local r = f()
+    if r ~= nil then display(r) end
+end
+
 function ticker:info(msg)
     local color = "yellow"
     notify(color, msg)
@@ -16,20 +26,20 @@ function ticker:debug(msg)
     notify(color, msg)    
 end
 
-function ticker:create(name, command, seconds)
+function ticker:create(name, code, seconds)
     if self.tickers[name] then
         self:debug(string.format("There's alreay a ticker named '%s'", name))
         return
     end
 
-    self:_c(name, command, seconds)
-    self:info(string.format("%s now executes '%s' every %d seconds", name, command, seconds))
+    self:_c(name, code, seconds)
+    self:info(string.format("%s now executes '%s' every %d seconds", name, code, seconds))
 end
 
 function ticker:list()
-    cecho(string.format("%5s %-16s %-32s %5s\n", "id", "name", "command", "sec"))
+    cecho(string.format("%5s %-16s %-32s %5s\n", "id", "name", "code", "sec"))
     for name, t in pairs(self.tickers) do
-        cecho(string.format("%5d %-16s %-32s %5d\n", t.id, name, t.command, t.seconds))
+        cecho(string.format("%5d %-16s %-32s %5d\n", t.id, name, t.code, t.seconds))
     end
 end
 
@@ -41,13 +51,13 @@ function ticker:destroy(name)
     self:info(string.format("%s is no longer a ticker", name))
 end
 
-function ticker:_c(name, command, seconds)
+function ticker:_c(name, code, seconds)
     local f = function()
-        send(command)
-        if self.tickers[name] then self:_c(name, command, seconds) end
+        eval(code)
+        if self.tickers[name] then self:_c(name, code, seconds) end
     end
     self.tickers[name] = {
-        command = command,
+        code = code,
         seconds = seconds,
         id = tempTimer(seconds, f),
     } 
