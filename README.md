@@ -4,24 +4,16 @@ This is a collection of **Mudlet** modules that are intended to be used in **Hel
 # setup
 The easiest way to load the scripts is to make use of the `lua` alias (that just executes Lua code) and the `dofile` function. There are no dependencies, you can use/load them together or individually.
 ```
-lua dofile("/where/you/cloned/mapper.lua")
-lua dofile("/where/you/cloned/ticker.lua")
-lua dofile("/where/you/cloned/action.lua")
-lua dofile("/where/you/cloned/delay.lua")
-lua dofile("/where/you/cloned/swatch.lua")
-lua dofile("/where/you/cloned/utils.lua")
+lua dofile("/where/you/cloned/mapper/mapper.lua")
+lua dofile("/where/you/cloned/ticker/ticker.lua")
+lua dofile("/where/you/cloned/action/action.lua")
+lua dofile("/where/you/cloned/delay/delay.lua")
+lua dofile("/where/you/cloned/swatch/swatch.lua")
+lua dofile("/where/you/cloned/utils/utils.lua")
 ...
 ```
 
 To check if they loaded correctly you can execute `lua mapper` and `lua ticker`. This will just display the definitions of the `mapper` and `ticker` objects respectively or nothing (and an error in the **Mudlet** error and debug windows) in case things went wrong.
-
-## swatches
-## delays
-## actions
-## tickers
-## mapper
-## overview
-Below is a definiton of all the triggers and aliases I currently use, I don't like the Mudlet export format so I'm just presenting the raw definitions.
 
 ## triggers
 ### highlights
