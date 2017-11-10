@@ -56,7 +56,7 @@ function action:destroy(pattern)
 end
 
 function action:list()
-    cecho(string.format("%5s %-32s %s\n", "id", "pattern", "code"))
+    cecho(string.format("<yellow>%5s %-32s %s<reset>\n", "id", "pattern", "code"))
     for pat, act in pairs(self.actions) do
         cecho(string.format("%5d %-32s %s\n", act.id, pat, act.code))
     end

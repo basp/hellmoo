@@ -33,7 +33,10 @@ function delay.log:warn(msg)
 end
 
 function delay:list()
-    display(self.delays)
+    cecho(string.format("<yellow>%5s %-32s %5s<reset>\n", "id", "code", "sec"))
+    for code, delay in pairs(self.delays) do
+        cecho(string.format("%5d %-32s %5d\n", delay.id, code, delay.seconds))
+    end
 end
 
 function delay:create(seconds, code)
