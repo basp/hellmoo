@@ -82,6 +82,11 @@ function ticker:create(name, code, seconds)
 end
 
 function ticker:list()
+    if table.getn(self.tickers) <= 0 then
+        self.log:info("There's no active tickers")
+        return
+    end
+
     cecho(string.format("<yellow>%5s %-24s %-39s %5s %5s<reset>\n", "id", "name", "code", "sec", "tte"))
     local now = os.time()
     for name, t in pairs(self.tickers) do

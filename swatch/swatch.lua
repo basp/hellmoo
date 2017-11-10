@@ -47,6 +47,11 @@ function swatch:help()
 end
 
 function swatch:list()
+    if table.getn(self.swatches) <= 0 then
+        self.log:info("There's no active swatches")
+        return
+    end
+
     cecho(string.format("<yellow>%5s %-64s %5s<reset>\n", "id", "name", "sec"))
     local t = os.time()
     for name, start in pairs(self.swatches) do

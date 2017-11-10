@@ -80,6 +80,11 @@ function delay:help()
 end
 
 function delay:list()
+    if table.getn(self.delays) <= 0 then
+        self.log:info("There's no active delays")
+        return
+    end
+
     cecho(string.format("<yellow>%5s %-64s %5s %5s<reset>\n", "id", "code", "sec", "tte"))
     local t = os.time()
     for code, delay in pairs(self.delays) do
