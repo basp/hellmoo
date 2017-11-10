@@ -81,8 +81,8 @@ command:
 
     <cyan>action info <id><reset>
 
-This will show you all the details of an action as well as the full pattern you
-can use to destroy it.
+This will show you all the details of the action with specified id and this
+includes the full pattern you can use to destroy it.
 
 <yellow>REMARKS<reset>
 Test your actions first with client-side output instead of sending commands 
