@@ -34,7 +34,7 @@ swatch create <name>                    create a new swatch
 swatch reset <name>                     reset an existing swatch
 unswatch <name>                         destroy an existing swatch
 swatches                                list all existing swatches
-swatch help                             shows this help
+swatch help                             show this help
 
 <yellow>REMARKS<reset>
 Swatches are extremely light-weight so you can have as many as you want. They

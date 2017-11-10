@@ -32,6 +32,34 @@ function action.log:warn(msg)
     notify(color, msg)
 end
 
+local help = [[
+<yellow>SUMMARY<reset>
+Actions execute some piece of code whenever a particular pattern of text is 
+received from the game. They are generally useful to automate a variety of
+repetative tasks.
+
+<yellow>ALIASES<reset>
+action {<pattern>} {<code>}             create a new action
+unaction <pattern>                      destroy an existing action
+actions                                 list all existing actions
+action help                             show this help
+
+<yellow>REMARKS<reset>
+Test your actions first with client-side output instead of sending commands 
+straight back to the game and potentially causing a feedback loop.
+
+While using actions or triggers is really on the wrists, you'll have to be
+careful that you operate within the rules of the game you're playing.
+
+Also be very careful with actions, if you create an action that triggers on
+the output it causes you'll quickly enter an action loop. This is bad for
+the server and might even get you banned so BE CAREFUL! 
+]]
+
+function action:help()
+    cecho(help)
+end
+
 function action:create(pattern, code)
     if self.actions[pattern] then
         local existing = self.actions[pattern].id

@@ -36,28 +36,28 @@ for a prolonged period of time.
 <yellow>ALIASES<reset>
 ticker {<name>} {<code>} <seconds>      create a new ticker
 unticker <name>                         destroy an existing ticker
-tickers                                 lists all running tickers
-ticker help                             shows this help
+tickers                                 list all running tickers
+ticker help                             show this help
 
 <yellow>EXAMPLES<reset>
 The example below creates a new ticker that uses the tickers built-in logging
 system to output a message every 30 seconds:
 
-    ticker {hello} {ticker.log:info("Hello from ticker!")} 30
+    <cyan>ticker {hello} {ticker.log:info("Hello from ticker!")} 30<reset>
 
 We can destroy this ticker with the follow command:
 
-    unticker hello
+    <cyan>unticker hello<reset>
 
 Note that ticker names support spaces, that's why we need the curly braces to
 sepearte the name and code parts when we use the alias:
 
-    ticker {say hello} {send("say Hello!")} 30
+    <cyan>ticker {say hello} {send("say Hello!")} 30<reset>
 
 Because there's no ambiguity when we unticker we don't need the braces when
 destroying tickers:
 
-    unticker say hello
+    <cyan>unticker say hello<reset>
 
 <yellow>REMARKS<reset>
 Tickers do consume resources, they are implemented as a chain of one-shot
