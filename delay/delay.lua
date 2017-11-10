@@ -80,16 +80,16 @@ function delay:help()
 end
 
 function delay:list()
-    if table.getn(self.delays) <= 0 then
+    if self:count() <= 0 then
         self.log:info("There are no active delays")
         return
     end
 
     cecho(string.format("<yellow>%5s %-64s %5s %5s<reset>\n", "id", "code", "sec", "tte"))
-    local t = os.time()
-    for code, delay in pairs(self.delays) do
-        local tte = delay.seconds - (t - delay.start)
-        cecho(string.format("%5d %-64s %5d %5d\n", delay.id, code:cut(64), delay.seconds, tte))
+    local now = os.time()
+    for code, d in pairs(self.delays) do
+        local tte = d.seconds - (now - d.start)
+        cecho(string.format("%5d %-64s %5d %5d\n", d.id, code:cut(64), d.seconds, tte))
     end
 end
 
@@ -103,6 +103,14 @@ function delay:create(seconds, code)
         end),
     }
     self.log:info(string.format("Ok, in %d seconds '%s' is executed", seconds, code))
+end
+
+function delay:count()
+    local c = 0
+    for code, delay in pairs(self.delays) do
+        c = c + 1
+    end
+    return c
 end
 
 function delay:destroy(id)

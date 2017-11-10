@@ -103,6 +103,14 @@ function ticker:destroy(name)
     self.log:info(string.format("Ok, %s is no longer a ticker", name))
 end
 
+function ticker:count()
+    local c = 0
+    for name, start in pairs(self.tickers) do
+        c = c + 1
+    end
+    return c    
+end
+
 function ticker:_c(name, code, seconds)
     local f = function()
         eval(code)

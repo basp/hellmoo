@@ -1,19 +1,16 @@
 # hellmoo utils for mudlet
 This is a collection of **Mudlet** modules that are intended to be used in **HellMOO** but might be useful more generally for other MUD/MOO style games as well.
 
-# setup
-The easiest way to load the scripts is to make use of the `lua` alias (that just executes Lua code) and the `dofile` function. There are no dependencies, you can use/load them together or individually.
-```
-lua dofile("/where/you/cloned/mapper/mapper.lua")
-lua dofile("/where/you/cloned/ticker/ticker.lua")
-lua dofile("/where/you/cloned/action/action.lua")
-lua dofile("/where/you/cloned/delay/delay.lua")
-lua dofile("/where/you/cloned/swatch/swatch.lua")
-lua dofile("/where/you/cloned/utils/utils.lua")
-...
-```
+## overview
+The whole package consists of a variety of modules that can be used independently of eachother. There's no dependencies to worry about.
 
-To check if they loaded correctly you can execute `lua mapper` and `lua ticker`. This will just display the definitions of the `mapper` and `ticker` objects respectively or nothing (and an error in the **Mudlet** error and debug windows) in case things went wrong.
+* `delay` executes a piece of code in the future
+* `swatch` helps you to keep track of durations (it's a stopwatch)
+* `ticker` executes code on regular intervals
+* `action` triggers code on patterns of output
+
+## setup
+
 
 ## triggers
 ### highlights

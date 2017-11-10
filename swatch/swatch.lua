@@ -47,15 +47,15 @@ function swatch:help()
 end
 
 function swatch:list()
-    if table.getn(self.swatches) <= 0 then
+    if self:count() <= 0 then
         self.log:info("There are no active swatches")
         return
     end
 
     cecho(string.format("<yellow>%5s %-64s %5s<reset>\n", "id", "name", "sec"))
-    local t = os.time()
+    local now = os.time()
     for name, start in pairs(self.swatches) do
-        local dur = t - start
+        local dur = now - start
         cecho(string.format("%5d %-64s %5d\n", 0, name, dur))
     end
 end
@@ -81,3 +81,11 @@ function swatch:destroy(name)
     self.swatches[name] = nil
     self.log:info(string.format("Ok, swatch '%s' is no more", name))
 end 
+
+function swatch:count()
+    local c = 0
+    for name, start in pairs(self.swatches) do
+        c = c + 1
+    end
+    return c    
+end

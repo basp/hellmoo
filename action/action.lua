@@ -38,6 +38,10 @@ Actions execute some piece of code whenever a particular pattern of text is
 received from the game. They are generally useful to automate a variety of
 repetative tasks.
 
+Actions are equivalent to triggers you define in the Mudlet UI, they are far 
+more lightweight and transient though and are meant to be more of an ad-hoc
+alternative to using the default Mudlet triggers.
+
 <yellow>ALIASES<reset>
 action {<pattern>} {<code>}             create a new action
 unaction <pattern>                      destroy an existing action
@@ -109,8 +113,16 @@ function action:destroy(pattern)
     self.log:info(string.format("Ok, Trigger '%s' is no more", pattern))
 end
 
+function action:count()
+    local c = 0
+    for pat, act in pairs(self.actions) do
+        c = c + 1
+    end
+    return c
+end
+
 function action:list()
-    if table.getn(self.actions) <= 0 then
+    if self:count() <= 0 then
         self.log:info("There are no active actions")
         return
     end
