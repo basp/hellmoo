@@ -37,6 +37,6 @@ Another good way to inspect the modules is to just output the module object usin
 lua module
 ```
 
-Which will show you a Lua definition of the specified module object.
+Which will show you a Lua definition of the specified module object. Remember to substitute `module` with one of the module names from the **overview** above.
 
-Each module has its own more detailed documentation and reference, look there for more info on how to use them.
+Each module has its own more detailed documentation and reference, look at the `README` in their respective folders for more info on how to use them or use the built-in help.
