@@ -32,9 +32,11 @@ Or you can just type the module name which does the same:
 module
 ```
 
-Another good way to inspect the modules is to just output the module object using the lua API:
+Another good way to inspect the modules is to just output the module object using the Lua API:
 ```
 lua module
 ```
 
 Which will show you a Lua definition of the specified module object.
+
+Each module has its own more detailed documentation and reference, look there for more info on how to use them.
