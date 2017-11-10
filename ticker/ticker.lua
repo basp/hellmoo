@@ -82,7 +82,7 @@ function ticker:create(name, code, seconds)
 end
 
 function ticker:list()
-    if table.getn(self.tickers) <= 0 then
+    if self:count() <= 0 then
         self.log:info("There are no active tickers")
         return
     end

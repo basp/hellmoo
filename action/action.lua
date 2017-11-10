@@ -149,8 +149,8 @@ function action:list()
         return
     end
 
-    cecho(string.format("<yellow>%5s %-32s %-24s<reset>\n", "id", "pattern", "code"))
+    cecho(string.format("<yellow>%5s %-24s %s<reset>\n", "id", "pattern", "code"))
     for pat, act in pairs(self.actions) do
-        cecho(string.format("%5d %-32s %-24s\n", act.id, pat:cut(32), act.code:cut(24)))
+        cecho(string.format("%5d %-24s %s\n", act.id, pat:cut(24), act.code:cut(32)))
     end
 end
