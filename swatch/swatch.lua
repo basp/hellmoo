@@ -47,11 +47,11 @@ function swatch:help()
 end
 
 function swatch:list()
-    cecho(string.format("<yellow>%-48s %8s<reset>\n", "name", "sec"))
+    cecho(string.format("<yellow>%5s %-64s %5s<reset>\n", "id", "name", "sec"))
     local t = os.time()
     for name, start in pairs(self.swatches) do
         local dur = t - start
-        cecho(string.format("%-48s %8d\n", name, dur))
+        cecho(string.format("%5d %-64s %5d\n", 0, name, dur))
     end
 end
 

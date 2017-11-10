@@ -82,11 +82,11 @@ function ticker:create(name, code, seconds)
 end
 
 function ticker:list()
-    cecho(string.format("<yellow>%5s %-16s %-48s %5s %5s<reset>\n", "id", "name", "code", "sec", "tte"))
+    cecho(string.format("<yellow>%5s %-24s %-39s %5s %5s<reset>\n", "id", "name", "code", "sec", "tte"))
     local now = os.time()
     for name, t in pairs(self.tickers) do
         local tte = t.seconds - (now - t.start)
-        cecho(string.format("%5d %-16s %-48s %5d %5d\n", t.id, name:cut(24), t.code:cut(48), t.seconds, tte))
+        cecho(string.format("%5d %-24s %-39s %5d %5d\n", t.id, name:cut(24), t.code:cut(48), t.seconds, tte))
     end
 end
 
