@@ -74,6 +74,16 @@ In this case, because there's no ambiguity, we don't need the curly braces.
 You can overwrite actions by using the same pattern. This will kill the old 
 trigger and create a new one with the new code.
 
+Sometimes your action triggers might not easily fit in the truncated action
+listing. In order to destroy the action you need the pattern though so in order
+to find out all the information about an action you can always use the info
+command:
+
+    <cyan>action info <id><reset>
+
+This will show you all the details of an action as well as the full pattern you
+can use to destroy it.
+
 <yellow>REMARKS<reset>
 Test your actions first with client-side output instead of sending commands 
 straight back to the game and potentially causing a feedback loop.
@@ -113,6 +123,18 @@ function action:destroy(pattern)
     self.log:info(string.format("Ok, Trigger '%s' is no more", pattern))
 end
 
+function action:info(id)
+    for pat, act in pairs(self.actions) do
+        if act.id == id then
+            cecho("Id      : "..act.id.."\n")
+            cecho("Pattern : "..pat.."\n")
+            cecho("Code    : "..act.code.."\n")
+            return
+        end
+    end
+    self.log:info(string.format("There's no action with id %d", id))
+end
+
 function action:count()
     local c = 0
     for pat, act in pairs(self.actions) do
@@ -127,8 +149,8 @@ function action:list()
         return
     end
 
-    cecho(string.format("<yellow>%5s %-32s %s<reset>\n", "id", "pattern", "code"))
+    cecho(string.format("<yellow>%5s %-32s %-24s<reset>\n", "id", "pattern", "code"))
     for pat, act in pairs(self.actions) do
-        cecho(string.format("%5d %-32s %s\n", act.id, pat, act.code))
+        cecho(string.format("%5d %-32s %-24s\n", act.id, pat:cut(32), act.code:cut(24)))
     end
 end

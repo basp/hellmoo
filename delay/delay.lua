@@ -55,14 +55,14 @@ The command below would destroy the delay created in the previous example:
     <cyan>undelay delay.log:info("Hello from the past!")<reset>
 
 If you frequenly need to undelay it might be useful to store the code in a
-variable:
+variable and use the Lua API instead:
 
     <cyan>lua code = [[delay.log:info("Hello from the past!")]]<reset>
-    <cyan>delay 600 code<reset>
+    <cyan>delay:create(600, code)<reset>
 
-And then later you can easily undelay this by using the code variable:
+Later, you can easily undelay this by using the code variable again:
 
-    <cyan>undelay code<reset>
+    <cyan>lua delay:destroy(code)<reset>
 
 Because you're executing Lua code, if you want to send commands to the game
 you'll have to use the send function. The example below will send a command to
