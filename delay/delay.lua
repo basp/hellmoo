@@ -33,17 +33,18 @@ function delay.log:warn(msg)
 end
 
 local help = [=[
-SUMMARY
+<yellow>SUMMARY<reset>
 Delays are used to execute a chunk of code sometime in the future. They are 
 especially useful when you want to be notified of some event that happened
 somewhere else (like a repop or restock for example).
 
-ALIASES
-delay <seconds> <code>          create a new delay
-undelay <code>                  destroy an existing delay
-delays                          lists all existing delays
+<yellow>ALIASES<reset>
+delay <seconds> <code>                  create a new delay
+undelay <code>                          destroy an existing delay
+delays                                  lists all existing delays
+delay help                              shows this help
 
-EXAMPLES
+<yellow>EXAMPLES<reset>
 The example below will execute a notification message 10 minutes (600 seconds)
 into the future using the delay's built-in logging system:
 
@@ -69,7 +70,7 @@ the game in 30 seconds:
 
     delay 30 send("say Belated hi!")
 
-REMARKS
+<yellow>REMARKS<reset>
 When you list delays you will see an id and tte field. The id field is used 
 internally and the tte field shows the time-to-execute for that delay.
 ]=]

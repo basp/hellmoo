@@ -1,7 +1,7 @@
 utils = utils or {}
 
 local help = [=[
-SUMMARY
+<yellow>SUMMARY<reset>
 This module currently contains a stand-alone reference version of the eval 
 function that is also included locally in most other modules. This is the
 same function that is inluded in Mudlet and runs the lua alias.

@@ -23,19 +23,20 @@ function swatch.log:warn(msg)
 end
 
 local help = [=[
-SUMMARY
+<yellow>SUMMARY<reset>
 Swatches are simple tool that can be used to time events such as repop and 
 shop restock. Once you find out how long something takes you can setup a 
 delay in order to be notified while you're off to do something else. However,
 swatches are generally useful in lots of ways.
 
-ALIASES
-swatch create <name>            create a new swatch
-swatch reset <name>             reset an existing swatch
-unswatch <name>                 destroy an existing swatch
-swatches                        list all existing swatches
+<yellow>ALIASES<reset>
+swatch create <name>                    create a new swatch
+swatch reset <name>                     reset an existing swatch
+unswatch <name>                         destroy an existing swatch
+swatches                                list all existing swatches
+swatch help                             shows this help
 
-REMARKS
+<yellow>REMARKS<reset>
 Swatches are extremely light-weight so you can have as many as you want. They
 are implemented as a simple table of start times and there are no resources 
 such as temporary timers or anything involved. Use them liberally.
@@ -46,11 +47,11 @@ function swatch:help()
 end
 
 function swatch:list()
-    cecho(string.format("<yellow>%-16s %8s<reset>\n", "name", "sec"))
+    cecho(string.format("<yellow>%-48s %8s<reset>\n", "name", "sec"))
     local t = os.time()
     for name, start in pairs(self.swatches) do
         local dur = t - start
-        cecho(string.format("%-16s %8d\n", name, dur))
+        cecho(string.format("%-48s %8d\n", name, dur))
     end
 end
 
