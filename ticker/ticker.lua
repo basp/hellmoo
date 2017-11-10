@@ -26,6 +26,28 @@ function ticker:debug(msg)
     notify(color, msg)    
 end
 
+local help = [=[
+SUMMARY
+Tickers are used to execute a chunk of code on regular interval. They are
+useful if you need to execute the same command many times on a regular basis 
+for a prolonged period of time.
+
+ALIASES
+TODO
+
+EXAMPLES
+TODO
+
+REMARKS
+Note that the curly braces in the examples above are required for the aliases
+to fire properly. Without them, it would be hard to seperate the name and code
+arguments.
+]=]
+
+function ticker:help()
+    cecho(help)
+end
+
 function ticker:create(name, code, seconds)
     if self.tickers[name] then
         self:debug(string.format("Killing existing ticker %s", name))
