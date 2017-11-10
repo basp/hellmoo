@@ -1,6 +1,0 @@
-#MAP CREATE ROOM     1 {}.
-#MAP: 50000 room map created, use #map goto 1, to proceed
-#MAP GOTO: MOVED TO ROOM 1 {}.
-#MAP CREATE ROOM     4 {}.
-#MAP CREATE EXIT     4 {n} {n}.
-#MAP CREATE EXIT     3 {s} {s}.
