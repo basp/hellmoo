@@ -19,7 +19,7 @@ lua dofile("/where/you/cloned/module/module.lua")
 In order to make use of any *aliases* you will need to either import the Mudlet package (in the `_package` directory) or define them yourself using the reference in the `REF.md` (incomplete) specification.
 
 ## usage
-Most of the modules have a very similar API. After you loaded one of the modules you can always ask for help using the Lua API:
+Most of the modules have a very similar API (at least some `create`, `list` and `destroy` variant). After you loaded one of the modules you can always ask for help using the Lua API:
 ```
 lua module:help()
 ```
