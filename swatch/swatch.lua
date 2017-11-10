@@ -34,7 +34,7 @@ end
 function swatch:create(name)
     if self.swatches[name] then return end
     self.swatches[name] = os.time();
-    self.log:info(string.format("Created new swatch '%s'", name))
+    self.log:info(string.format("Ok, created new swatch '%s'", name))
 end
 
 function swatch:reset(name)
@@ -50,4 +50,5 @@ end
 
 function swatch:destroy(name)
     self.swatches[name] = nil
+    self.log:info(string.format("Ok, swatch '%s' is no more", name))
 end 
