@@ -8,45 +8,33 @@ The whole package consists of a variety of modules that can be used independentl
 * `swatch` helps you to keep track of durations (it's a stopwatch)
 * `ticker` executes code on regular intervals
 * `action` triggers code on patterns of output
+* `mapper` is a mapper API tailored to HellMOO
 
 ## setup
-
-
-## triggers
-### highlights
-* `orange halo` (substring)
-* `From your wristpad:` (begin of line substring)
-* `(burned(-out)?)` (perl regex)
-* `Your stench recedes a little.` (substring)
-* `^You wince and shrug off the radiation sickness.$` (perl regex)
-
-### fishing
-#### jerk
-`^You feel a tug on your line.$` (perl regex)
+Basically you just clone this repository somewhere and use the `dofile` function to load all or any of the modules.
 ```
-send("jerk pole")
+dofile("/where/you/cloned/module/module.lua")
 ```
 
-#### reel
-`^(.*) The (.*) pulls (.*) out on the line.$` (perl regex)
+## usage
+Most of the modules have a very similar API. After you loaded one of the modules you can always ask for help using the Lua API:
 ```
-send("reel")
-```
-
-### barks
-#### dead tree
-* `^The (.*) treeman creaks and groans, falling apart into a pile of kindling.$` (perl regex)
-* `^The body of (.*) treeman's limbs twitch feebly; it coughs weakly, and moves no more.$` (perl regex)
-```
-local t = matches[2]
-send("cut bark from "..t)
+lua module:help()
 ```
 
-#### cut bark
-* `^(.*) hacks a mossy bark off the body of (.*) treeman.$`
+Or using one of the aliases:
 ```
-send("put bark in straw")
+module help
 ```
 
-### aliases
-TODO
+Or you can just type the module name which does the same:
+```
+module
+```
+
+Another good way to inspect the modules is to just output the module object using the lua API:
+```
+lua module
+```
+
+Which will show you a Lua definition of the specified module object.
