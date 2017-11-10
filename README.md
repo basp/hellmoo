@@ -13,7 +13,7 @@ The whole package consists of a variety of modules that can be used independentl
 ## setup
 Basically you just clone this repository somewhere and use the `dofile` function to load all or any of the modules.
 ```
-dofile("/where/you/cloned/module/module.lua")
+lua dofile("/where/you/cloned/module/module.lua")
 ```
 
 ## usage
