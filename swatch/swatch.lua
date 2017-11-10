@@ -22,6 +22,21 @@ function swatch.log:warn(msg)
     notify(color, msg)
 end
 
+local help = [[
+Swatches are simple tool that can be used to time events such as repop and 
+shock restock. Once you find out how long something takes you can setup a 
+delay in order to be notified while you're off to do something else.
+
+swatch create <name>            create a new swatch
+swatch reset <name>             reset an existing swatch
+unswatch <name>                 destroy an existing swatch
+swatches                        list all existing swatches
+]]
+
+function swatch:help()
+    cecho(help)
+end
+
 function swatch:list()
     cecho(string.format("<yellow>%-16s %8s<reset>\n", "name", "sec"))
     local t = os.time()
