@@ -83,7 +83,7 @@ end
 
 function ticker:list()
     if table.getn(self.tickers) <= 0 then
-        self.log:info("There's no active tickers")
+        self.log:info("There are no active tickers")
         return
     end
 

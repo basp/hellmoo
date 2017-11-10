@@ -48,7 +48,7 @@ end
 
 function swatch:list()
     if table.getn(self.swatches) <= 0 then
-        self.log:info("There's no active swatches")
+        self.log:info("There are no active swatches")
         return
     end
 

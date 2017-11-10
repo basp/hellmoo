@@ -81,7 +81,7 @@ end
 
 function delay:list()
     if table.getn(self.delays) <= 0 then
-        self.log:info("There's no active delays")
+        self.log:info("There are no active delays")
         return
     end
 
