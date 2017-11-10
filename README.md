@@ -16,6 +16,13 @@ Basically you just clone this repository somewhere and use the `dofile` function
 lua dofile("/where/you/cloned/module/module.lua")
 ```
 
+Or you can use the master loader which will load all modules that are suitable for public consumption:
+```
+lua dofile("/where/you/cloned/hum.lua")
+```
+
+This will load all the modules and additionally it will create a `hum` object so you can inspect the whole system by executing `lua hum`.
+
 In order to make use of any *aliases* you will need to either import the Mudlet package (in the `_package` directory) or define them yourself using the reference in the `REF.md` (incomplete) specification.
 
 ## usage
