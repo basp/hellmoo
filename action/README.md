@@ -13,8 +13,11 @@ Note that (in contrast to *tickers*) the code is raw Lua code to be executed. So
 action:create([[^The thing dies!$]], [[send("cut skin from thing")]])
 ```
 
-### todo
-It should be possible to create actions that *capture* groups of characters and re-use them in the code like this:
+If you want to make use of matches things get a bit more clunky though:
 ```
-action:create([[^the %1 treeman dies!$]], [[send("cut bark from %1")]])
+action:create([[^The (.+) dies!$]], [[send("cut skin from "..matches[2])]])
 ```
+
+The `matches` object contains all the groups that we matched (the stuff in between the round brackets `(` and `)`) but we have to remember that it also contains the complete match in `matches[1]`. Therefor, if we match groups using the round brackets our first match will be in `matches[2]`. 
+
+Complicated? Yes. Unfriendly? Yes that as well but a solutioin for this is on the TODO list.
