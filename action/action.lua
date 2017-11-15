@@ -2,6 +2,7 @@ action = action or {}
 
 action.actions = action.actions or {}
 action.log = action.log or {}
+action.aliases = action.aliases or {}
 
 local function notify(color, msg)
     cecho("<"..color..">[ ACTION ] <reset>"..msg.."\n")
@@ -112,6 +113,9 @@ function action:init()
 end
 
 function action:unload()
+    for pat, alias in self.aliases do
+        killAlias(alias.id)
+    end
     self.log:debug("Unloaded module")
 end
 

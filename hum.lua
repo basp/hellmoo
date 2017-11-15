@@ -1,3 +1,4 @@
+-- Make sure to set the path below to your clone location
 local base = [[d:/dev/hellmoo]]
 
 hum = hum or {}
@@ -20,15 +21,17 @@ function hum.log:debug(message)
 end
 
 local help = [=[
+<magenta>--------------------------------------------------------------------------------<reset>   
 <yellow>SUMMARY<reset>
 This is the hum module loader. It's main purpose is to offer an easier and 
 safer way to load modules than using Lua's dofile function directly.
 
 <yellow>ALIASES<reset>
 hum load {<module>}                     load a module
-hum loadall                             load all modules
+hum load all                            load all available modules
 hum list                                list module info
 hum help                                show this help
+<magenta>--------------------------------------------------------------------------------<reset>
 ]=]
 
 function hum:help()
