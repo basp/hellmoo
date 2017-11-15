@@ -55,6 +55,13 @@ We can destroy this ticker with the follow command:
 
     <cyan>unticker {hello}<reset>
 
+Because tickers run Lua code client-side we need to use the send function to
+send commands to the game:
+
+    <cyan>ticker {hello} {send("say Hello!")} {10}
+
+The above would send the command "say hello" every 10 seconds.
+
 <yellow>REMARKS<reset>
 Tickers do consume resources, they are implemented as a chain of one-shot
 timers using Mudlet's tempTimer API. This is also why you will see a ticker's
@@ -78,10 +85,10 @@ local aliases = {
 
 function ticker:init()
     for pat, code in pairs(aliases) do
-        if self.aliases[pat] then 
+        if self.aliases[pat] then
             killAlias(self.aliases[pat].id)
         end
-        self.aliases = {
+        self.aliases[pat] = {
             id = tempAlias(pat, code),
             code = code,
         }
