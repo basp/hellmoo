@@ -9,43 +9,27 @@ The whole package consists of a variety of modules that can be used independentl
 * `ticker` executes code on regular intervals
 * `action` triggers code on patterns of output
 * `mapper` is a mapper API tailored to HellMOO
-
-## setup
-Basically you just clone this repository somewhere and use the `dofile` function to load all or any of the modules.
-```
-lua dofile("/where/you/cloned/module/module.lua")
-```
-
-Or you can use the master loader which will load all modules that are suitable for public consumption:
-```
-lua dofile("/where/you/cloned/hum.lua")
-```
-
-This will load all the modules and additionally it will create a `hum` object so you can inspect the whole system by executing `lua hum`.
-
-In order to make use of any *aliases* you will need to either import the Mudlet package (in the `_package` directory) or define them yourself using the reference in the `REF.md` (incomplete) specification.
+* `gag` removes lines from output completely
 
 ## usage
-Most of the modules have a very similar API (at least some `create`, `list` and `destroy` variant). After you loaded one of the modules you can always ask for help using the Lua API:
+The recommended way to load modules is using the `hum` system module. First, we need to load (or *source*) this module into our client session. 
 ```
-lua module:help()
-```
-
-Or using one of the aliases:
-```
-module help
+lua dofile([[/scripts/hellmoo/hum.lua]])
 ```
 
-Or you can just type the module name which does the same:
+Now that we have `hum` loaded we can either load all known modules using the `loadall` function:
 ```
-module
-```
-
-Another good way to inspect the modules is to just output the module object using the Lua API:
-```
-lua module
+lua hum:loadall()
 ```
 
-Which will show you a Lua definition of the specified module object. Remember to substitute `module` with one of the module names from the **overview** above.
+Or load individual modules by name:
+```
+lua hum:load("gag")
+```
 
-Each module has its own more detailed documentation and reference, look at the `README` in their respective folders for more info on how to use them or use the built-in help.
+However, the modules can also be used directly without invoking the `hum` loader. Assuming you cloned the repository at `/scripts/hellmoo` then you can load the `ticker` module by executing the code below.
+```
+lua dofile([[/scripts/hellmoo/ticker/ticker.lua]]);
+```
+
+Other modules can be loaded in the same way. By replacing all instances of `ticker` in the above example with the module name you want to load.

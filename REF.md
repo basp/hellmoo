@@ -1,5 +1,5 @@
 # reference
-Below is a reference of all my trigger and alias patterns and their implementations (if not simple highlights).
+Below is a reference of all my trigger and alias patterns that are not in `hum` including their implementation (if not simple highlights).
 
 ## triggers
 ### highlights
