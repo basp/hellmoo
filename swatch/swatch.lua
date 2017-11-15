@@ -24,6 +24,7 @@ function swatch.log:warn(msg)
 end
 
 local help = [=[
+<magenta>--------------------------------------------------------------------------------<reset>
 <yellow>SUMMARY<reset>
 Swatches are simple tool that can be used to time events such as repop and 
 shop restock. Once you find out how long something takes you can setup a 
@@ -41,6 +42,7 @@ swatch help                             show this help
 Swatches are extremely light-weight so you can have as many as you want. They
 are implemented as a simple table of start times and there are no resources 
 such as temporary timers or anything involved. Use them liberally.
+<magenta>--------------------------------------------------------------------------------<reset>
 ]=]
 
 function swatch:help()

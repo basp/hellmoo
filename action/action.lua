@@ -33,6 +33,7 @@ function action.log:warn(msg)
 end
 
 local help = [[
+<magenta>--------------------------------------------------------------------------------<reset>
 <yellow>SUMMARY<reset>
 Actions execute some piece of code whenever a particular pattern of text is 
 received from the game. They are generally useful to automate a variety of
@@ -93,7 +94,8 @@ careful that you operate within the rules of the game you're playing.
 
 Also be very careful with actions, if you create an action that triggers on
 the output it causes you'll quickly enter an action loop. This is bad for
-the server and might even get you banned so BE CAREFUL! 
+the server and might even get you banned so BE CAREFUL!
+<magenta>--------------------------------------------------------------------------------<reset>
 ]]
 
 function action:help()

@@ -33,6 +33,7 @@ function delay.log:warn(msg)
 end
 
 local help = [=[
+<magenta>--------------------------------------------------------------------------------<reset>
 <yellow>SUMMARY<reset>
 Delays are used to execute a chunk of code sometime in the future. They are 
 especially useful when you want to be notified of some event that happened
@@ -73,6 +74,7 @@ the game in 30 seconds:
 <yellow>REMARKS<reset>
 When you list delays you will see an id and tte field. The id field is used 
 internally and the tte field shows the time-to-execute for that delay.
+<magenta>--------------------------------------------------------------------------------<reset>
 ]=]
 
 function delay:help()
@@ -80,7 +82,7 @@ function delay:help()
 end
 
 local aliases = {
-    ["^delay \\{(\\d+)\\} \\{(.+)\\}$"] = [[delay:create(tonumber(matches[2], matches[3]))]],
+    ["^delay \\{(\\d+)\\} \\{(.+)\\}$"] = [[delay:create(tonumber(matches[2]), matches[3])]],
     ["^undelay \\{(\\d+)\\}$"] = [[delay:destroy(tonumber(matches[2])]],
     ["^delays$"] = [[delay:list()]],
     ["^delay help$"] = [[delay:help()]],

@@ -34,6 +34,7 @@ function ticker.log:warn(msg)
 end
 
 local help = [=[
+<magenta>--------------------------------------------------------------------------------<reset>
 <yellow>SUMMARY<reset>
 Tickers are used to execute a chunk of code on regular interval. They are
 useful if you need to execute the same command many times on a regular basis 
@@ -69,6 +70,7 @@ id update every time it fires.
 
 Note that just like a delay, tickers also include a tte (time-to-execute) 
 field in the listing.
+<magenta>--------------------------------------------------------------------------------<reset>
 ]=]
 
 function ticker:help()

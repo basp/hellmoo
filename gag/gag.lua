@@ -23,6 +23,7 @@ function gag.log:warn(msg)
 end
 
 local help = [=[
+<magenta>--------------------------------------------------------------------------------<reset>
 <yellow>SUMMARY<reset>
 Gags are used to strip whole lines containing a particular pattern from the
 output. They are useful to silence spammy objects.
@@ -34,6 +35,7 @@ gags                                    list all existing gags
 
 <yellow>REMARKS<reset>
 Note that triggers and actions will still fire on gagged lines.
+<magenta>--------------------------------------------------------------------------------<reset>
 ]=]
 
 function gag:help()
