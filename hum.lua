@@ -56,7 +56,7 @@ function hum:init()
             code = code,
         }
     end
-    self.log:debug("Initialized hum module")    
+    self.log:debug("Initialized module")    
 end
 
 function hum:load(module)
