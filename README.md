@@ -22,7 +22,7 @@ Now that we have `hum` loaded we can either load all known modules using the `lo
 lua hum:loadall()
 ```
 
-Or load individual modules by name:
+Or load individual modules by name using the `load` function:
 ```
 lua hum:load("gag")
 ```
