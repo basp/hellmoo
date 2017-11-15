@@ -13,7 +13,6 @@ local function eval(code)
     if not f then
         f, e = assert(loadstring(code))
     end
-    
     local r = f()
     if r ~= nil then display(r) end
 end
@@ -88,8 +87,16 @@ local aliases = {
 }
 
 function delay:init()
-    for pat, code in pairs(delays) do
+    for pat, code in pairs(aliases) do
+        if self.aliases[pat] then
+            killAlias(self.aliases[pat].id)
+        end
+        self.aliases[pat] = {
+            id = tempAlias(pat, code),
+            code = code,
+        }
     end
+    self.log:debug("Initialized delay module")
 end
 
 function delay:list()
@@ -132,3 +139,5 @@ function delay:destroy(id)
     self.delays[id] = nil
     self.log:info(string.format("Ok, delay '%s' is no more", id))
 end
+
+delay:init()

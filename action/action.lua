@@ -100,6 +100,14 @@ function action:help()
     cecho(help)
 end
 
+local aliases = {
+
+}
+
+function action:init()
+    self.log:debug("Initialized action module")
+end
+
 function action:create(pattern, code)
     if self.actions[pattern] then
         local existing = self.actions[pattern].id
@@ -154,3 +162,5 @@ function action:list()
         cecho(string.format("%5d %-24s %s\n", act.id, pat:cut(24), act.code:cut(32)))
     end
 end
+
+action:init()

@@ -66,6 +66,7 @@ function swatch:init()
             code = code,
         }
     end
+    self.log:debug("Initialized swatch module")
 end
 
 function swatch:list()
@@ -111,3 +112,5 @@ function swatch:count()
     end
     return c    
 end
+
+swatch:init()

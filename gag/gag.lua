@@ -58,6 +58,7 @@ function gag:init()
             code = code,
         }
     end
+    self.log:debug("Initialized gag module")
 end
 
 function gag:create(pattern)
@@ -96,3 +97,5 @@ function gag:count()
     end
     return c
 end
+
+gag:init()

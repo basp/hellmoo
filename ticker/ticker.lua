@@ -2,7 +2,7 @@ ticker = ticker or {}
 
 ticker.tickers = ticker.tickers or {}
 ticker.log = ticker.log or {}
-ticker.aliases = ticker.aliases = {}
+ticker.aliases = ticker.aliases or {}
 
 local function notify(color, msg)
     cecho("<"..color..">[ TICKER ] <reset>"..msg.."\n")
@@ -26,6 +26,11 @@ end
 function ticker.log:debug(msg)
     local color = "yellow"
     notify(color, msg)    
+end
+
+function ticker.log:warn(msg)
+    local color = "yellow"
+    notify(color, msg)
 end
 
 local help = [=[
@@ -81,6 +86,7 @@ function ticker:init()
             code = code,
         }
     end
+    self.log:debug("Initialized ticker module")
 end
 
 function ticker:create(name, code, seconds)
@@ -136,3 +142,5 @@ function ticker:_c(name, code, seconds)
         id = tempTimer(seconds, f),
     } 
 end
+
+ticker:init()
