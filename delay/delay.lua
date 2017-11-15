@@ -49,11 +49,11 @@ delay help                              show this help
 The example below will execute a notification message 10 minutes (600 seconds)
 into the future using the delay's built-in logging system:
 
-    <cyan>delay 600 delay.log:info("Hello from the past!")<reset>
+    <cyan>delay {600} {delay.log:info("Hello from the past!")}<reset>
 
 The command below would destroy the delay created in the previous example:
 
-    <cyan>undelay delay.log:info("Hello from the past!")<reset>
+    <cyan>undelay {delay.log:info("Hello from the past!")}<reset>
 
 If you frequenly need to undelay it might be useful to store the code in a
 variable and use the Lua API instead:
@@ -69,7 +69,7 @@ Because you're executing Lua code, if you want to send commands to the game
 you'll have to use the send function. The example below will send a command to
 the game in 30 seconds:
 
-    <cyan>delay 30 send("say Belated hi!")<reset>
+    <cyan>delay {30} {send("say Belated hi!")}<reset>
 
 <yellow>REMARKS<reset>
 When you list delays you will see an id and tte field. The id field is used 
