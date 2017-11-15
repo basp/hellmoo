@@ -1,5 +1,7 @@
 # hellmoo utils for mudlet
-This is a collection of **Mudlet** modules that are intended to be used in **HellMOO** but might be useful more generally for other MUD/MOO style games as well.
+This is a collection of **Mudlet** modules that are intended to be used in **HellMOO** but might be useful more generally for other MUD/MOO style games as well. 
+
+Most of the modules are heavily inspired by similar functionality available in **TinTin++** (as wel as other) clients. Note that all of this functionality already has equivalents in Mudlet. The only thing this package does is to expose that functionality in a different and (hopefully) more *wrist-friendly* way.
 
 ## overview
 The whole package consists of a variety of modules that can be used independently of eachother. There's no dependencies to worry about.
