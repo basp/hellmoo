@@ -151,3 +151,4 @@ function ticker:_c(name, code, seconds)
 end
 
 ticker:init()
+if hum then hum.ticker = ticker end

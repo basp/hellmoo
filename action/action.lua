@@ -164,3 +164,4 @@ function action:list()
 end
 
 action:init()
+if hum then hum.action = action end

@@ -114,3 +114,4 @@ function swatch:count()
 end
 
 swatch:init()
+if hum then hum.swatch = swatch end

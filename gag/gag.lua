@@ -99,3 +99,4 @@ function gag:count()
 end
 
 gag:init()
+if hum then hum.gag = gag end

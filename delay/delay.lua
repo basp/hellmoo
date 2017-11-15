@@ -141,3 +141,4 @@ function delay:destroy(id)
 end
 
 delay:init()
+if hum then hum.action = action end

@@ -81,18 +81,10 @@ function hum:list()
     cecho(string.format("<yellow>%-32s %-6s<reset>\n", "module", "loaded"))
     for i, mod in ipairs(modules) do
         local loaded = false 
-        if hum[mod].log then 
-            loaded = true 
-        end
+        if hum[mod] then loaded = true end
         cecho(string.format("%-32s %-6s\n", mod, tostring(loaded)))
     end
 end
-
-hum.action = action or {}
-hum.delay = delay or {}
-hum.swatch = swatch or {}
-hum.ticker = ticker or {}
-hum.gag = gag or {}
 
 hum:init()
 hum.log:info("Ready.")
