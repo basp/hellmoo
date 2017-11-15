@@ -84,6 +84,7 @@ local aliases = {
     ["^undelay \\{(\\d+)\\}$"] = [[delay:destroy(tonumber(matches[2])]],
     ["^delays$"] = [[delay:list()]],
     ["^delay help$"] = [[delay:help()]],
+    ["^delay$"] = [[delay:help()]],
 }
 
 function delay:init()
@@ -141,4 +142,4 @@ function delay:destroy(id)
 end
 
 delay:init()
-if hum then hum.action = action end
+if hum then hum.delay = delay end

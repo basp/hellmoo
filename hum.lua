@@ -80,9 +80,13 @@ end
 function hum:list()
     cecho(string.format("<yellow>%-32s %-6s<reset>\n", "module", "loaded"))
     for i, mod in ipairs(modules) do
+        local color = "gray"
         local loaded = false 
-        if hum[mod] then loaded = true end
-        cecho(string.format("%-32s %-6s\n", mod, tostring(loaded)))
+        if hum[mod] then 
+            loaded = true 
+            color = "white"
+        end
+        cecho(string.format("<%s>%-32s %-6s<reset>\n", color, mod, tostring(loaded)))
     end
 end
 
