@@ -1,8 +1,19 @@
-## swatch module
-A swatch is just a stopwatch, a mechanism to keep track of time.
+### SUMMARY
+Swatches are simple tool that can be used to time events such as repop and 
+shop restock. Once you find out how long something takes you can setup a 
+delay in order to be notified while you're off to do something else. However,
+swatches are generally useful in lots of ways.
 
-### reference
-* `:create(message)` create a new swatch, it starts running immediately (give it some useful info by supplying a `message`)
-* `:list()` list all running swatches
-* `:duration(id)` get the duraction in seconds since you started the swatch
-* `:destroy(id)` destroy the swatch
+### ALIASES
+```
+swatch {<name>}                         create a new swatch
+swatch reset {<name>}                   reset an existing swatch
+unswatch {<name>}                       destroy an existing swatch
+swatches                                list all existing swatches
+swatch help                             show this help
+```
+
+### REMARKS
+Swatches are extremely light-weight so you can have as many as you want. They
+are implemented as a simple table of start times and there are no resources 
+such as temporary timers or anything involved. Use them liberally.
