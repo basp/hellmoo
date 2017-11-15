@@ -1,6 +1,7 @@
 gag = gag or {}
 gag.gags = gag.gags or {}
 gag.log = gag.log or {}
+gag.aliases = gag.aliases or {}
 
 local function notify(color, msg)
     cecho("<"..color..">[ GAG ] <reset>"..msg.."\n")
@@ -37,6 +38,26 @@ Note that triggers and actions will still fire on gagged lines.
 
 function gag:help()
     cecho(help)
+end
+
+local aliases = {
+    ["^gag \\{(.+)\\}$"] = [[gag:create(matches[2])]],
+    ["^ungag \\{(.+)\\}$"] = [[gag:destroy(matches[2])]],
+    ["^gags$"] = [[gag:list()]],
+    ["^gag help$"] = [[gag:help()]],
+    ["^gag$"] = [[gag:help()]],
+}
+
+function gag:init()
+    for pat, code in pairs(aliases) do
+        if self.aliases[pat] then
+            killAlias(self.aliases[pat].id)
+        end
+        self.aliases[pat] = {
+            id = tempAlias(pat, code),
+            code = code,
+        }
+    end
 end
 
 function gag:create(pattern)

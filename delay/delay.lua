@@ -2,6 +2,7 @@ delay = delay or {}
 
 delay.delays = delay.delays or {}
 delay.log = delay.log or {}
+delay.aliases = delay.aliases or {}
 
 local function notify(color, msg)
     cecho("<"..color..">[ DELAY ] <reset>"..msg.."\n")
@@ -39,8 +40,8 @@ especially useful when you want to be notified of some event that happened
 somewhere else (like a repop or restock for example).
 
 <yellow>ALIASES<reset>
-delay <seconds> <code>                  create a new delay
-undelay <code>                          destroy an existing delay
+delay {<seconds>} {<code>}              create a new delay
+undelay {<code>}                        destroy an existing delay
 delays                                  list all existing delays
 delay help                              show this help
 
@@ -77,6 +78,18 @@ internally and the tte field shows the time-to-execute for that delay.
 
 function delay:help()
     cecho(help)
+end
+
+local aliases = {
+    ["^delay \\{(\\d+)\\} \\{(.+)\\}$"] = [[delay:create(tonumber(matches[2], matches[3]))]],
+    ["^undelay \\{(\\d+)\\}$"] = [[delay:destroy(tonumber(matches[2])]],
+    ["^delays$"] = [[delay:list()]],
+    ["^delay help$"] = [[delay:help()]],
+}
+
+function delay:init()
+    for pat, code in pairs(delays) do
+    end
 end
 
 function delay:list()

@@ -2,6 +2,7 @@ ticker = ticker or {}
 
 ticker.tickers = ticker.tickers or {}
 ticker.log = ticker.log or {}
+ticker.aliases = ticker.aliases = {}
 
 local function notify(color, msg)
     cecho("<"..color..">[ TICKER ] <reset>"..msg.."\n")
@@ -34,8 +35,8 @@ useful if you need to execute the same command many times on a regular basis
 for a prolonged period of time.
 
 <yellow>ALIASES<reset>
-ticker {<name>} {<code>} <seconds>      create a new ticker
-unticker <name>                         destroy an existing ticker
+ticker {<name>} {<code>} {<seconds>}    create a new ticker
+unticker {<name>}                       destroy an existing ticker
 tickers                                 list all running tickers
 ticker help                             show this help
 
@@ -43,21 +44,11 @@ ticker help                             show this help
 The example below creates a new ticker that uses the tickers built-in logging
 system to output a message every 30 seconds:
 
-    <cyan>ticker {hello} {ticker.log:info("Hello from ticker!")} 30<reset>
+    <cyan>ticker {hello} {ticker.log:info("Hello from ticker!")} {30}<reset>
 
 We can destroy this ticker with the follow command:
 
-    <cyan>unticker hello<reset>
-
-Note that ticker names support spaces, that's why we need the curly braces to
-sepearte the name and code parts when we use the alias:
-
-    <cyan>ticker {say hello} {send("say Hello!")} 30<reset>
-
-Because there's no ambiguity when we unticker we don't need the braces when
-destroying tickers:
-
-    <cyan>unticker say hello<reset>
+    <cyan>unticker {hello}<reset>
 
 <yellow>REMARKS<reset>
 Tickers do consume resources, they are implemented as a chain of one-shot
@@ -70,6 +61,26 @@ field in the listing.
 
 function ticker:help()
     cecho(help)
+end
+
+local aliases = {
+    ["^ticker \\{(.+)\\} \\{(.+)\\} \\{(.+)\\}$"] = [[ticker:create(matches[2], matches[3], tonumber(matches[4]))]],
+    ["^unticker \\{(.+)\\}$"] = [[ticker:destroy(matches[2])]],
+    ["^tickers$"] = [[ticker:list()]],
+    ["^ticker help$"] = [[ticker:help()]],
+    ["^ticker$"] = [[ticker:help()]],
+}
+
+function ticker:init()
+    for pat, code in pairs(aliases) do
+        if self.aliases[pat] then 
+            killAlias(self.aliases[pat].id)
+        end
+        self.aliases = {
+            id = tempAlias(pat, code),
+            code = code,
+        }
+    end
 end
 
 function ticker:create(name, code, seconds)

@@ -2,6 +2,7 @@ swatch = swatch or {}
 
 swatch.swatches = swatch.swatches or {}
 swatch.log = swatch.log or {}
+swatch.aliases = swatch.aliases or {}
 
 local function notify(color, msg)
     cecho("<"..color..">[ SWATCH ] <reset>"..msg.."\n")
@@ -30,9 +31,9 @@ delay in order to be notified while you're off to do something else. However,
 swatches are generally useful in lots of ways.
 
 <yellow>ALIASES<reset>
-swatch create <name>                    create a new swatch
-swatch reset <name>                     reset an existing swatch
-unswatch <name>                         destroy an existing swatch
+swatch {<name>}                         create a new swatch
+swatch reset {<name>}                   reset an existing swatch
+unswatch {<name>}                       destroy an existing swatch
 swatches                                list all existing swatches
 swatch help                             show this help
 
@@ -44,6 +45,27 @@ such as temporary timers or anything involved. Use them liberally.
 
 function swatch:help()
     cecho(help)
+end
+
+local aliases = {
+    ["^swatch \\{(.+)\\}$"] = [[swatch:create(matches[2])]],
+    ["^swatch reset \\{(.+)\\}$"] = [[swatch:reset(matches[2])]],
+    ["^unswatch \\{(.+)\\}$"] = [[swatch:destroy(matches[2])]],
+    ["^swatches$"] = [[swatch:list()]],
+    ["^swatch help$"] = [[swatch:help()]],
+    ["^swatch$"] = [[swatch:help()]],
+}
+
+function swatch:init()
+    for pat, code in pairs(aliases) do
+        if self.aliases[pat] then 
+            killAlias(self.aliases[pat].id) 
+        end
+        self.aliases[pat] = {
+            id = tempAlias(pat, code),
+            code = code,
+        }
+    end
 end
 
 function swatch:list()
