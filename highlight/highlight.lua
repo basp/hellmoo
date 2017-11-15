@@ -80,7 +80,19 @@ function highlight:init()
             code = code,
         }
     end
-    self.log:debug("Initialized debug module")    
+    if hum then hum.highlight = highlight end 
+    self.log:debug("Initialized module")
+end
+
+function highlight:unload() 
+    for pat, alias in pairs(self.aliases) do
+        killAlias(alias.id)
+    end
+    for pat, hl in pairs(self.highlights) do
+        killTrigger(hl.id)
+    end
+    if hum then hum.highlight = nil end
+    self.log:debug("Unloaded module")
 end
 
 function highlight:create(pattern, fg, bg)

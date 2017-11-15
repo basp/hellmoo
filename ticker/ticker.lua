@@ -95,7 +95,19 @@ function ticker:init()
             code = code,
         }
     end
-    self.log:debug("Initialized ticker module")
+    if hum then hum.ticker = ticker end
+    self.log:debug("Initialized module")
+end
+
+function ticker:unload()
+    for pat, alias in pairs(self.aliases) do
+        killAlias(alias.id)
+    end
+    for name, t in pairs(self.tickers) do
+        killTimer(t.id)
+    end
+    if hum then hum.ticker = nil end
+    self.log:debug("Unloaded module")
 end
 
 function ticker:create(name, code, seconds)
@@ -153,4 +165,3 @@ function ticker:_c(name, code, seconds)
 end
 
 ticker:init()
-if hum then hum.ticker = ticker end

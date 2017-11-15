@@ -99,7 +99,18 @@ function delay:init()
             code = code,
         }
     end
-    self.log:debug("Initialized delay module")
+    if hum then hum.delay = delay end
+    self.log:debug("Initialized module")
+end
+
+function delay:unload()
+    for pat, alias in pairs(self.aliases) do
+        killAlias(alias.id)
+    end
+    for code, d in pairs(self.delays) do
+        killTimer(d.id)
+    end
+    self.log:debug("Unloaded module")
 end
 
 function delay:list()
@@ -144,4 +155,3 @@ function delay:destroy(id)
 end
 
 delay:init()
-if hum then hum.delay = delay end

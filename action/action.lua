@@ -107,7 +107,12 @@ local aliases = {
 }
 
 function action:init()
-    self.log:debug("Initialized action module")
+    if hum then hum.action = action end
+    self.log:debug("Initialized module")
+end
+
+function action:unload()
+    self.log:debug("Unloaded module")
 end
 
 function action:create(pattern, code)
@@ -166,4 +171,3 @@ function action:list()
 end
 
 action:init()
-if hum then hum.action = action end

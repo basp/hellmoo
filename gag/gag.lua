@@ -60,7 +60,19 @@ function gag:init()
             code = code,
         }
     end
-    self.log:debug("Initialized gag module")
+    if hum then hum.gag = gag end
+    self.log:debug("Initialized module")
+end
+
+function gag:unload()
+    for pat, alias in pairs(self.aliases) do
+        killAlias(alias.id)
+    end
+    for pat, gag in pairs(self.gags) do
+        killTrigger(gag.id)
+    end
+    if hum then hum.gag = nil end
+    self.log:debug("Unloaded module")
 end
 
 function gag:create(pattern)
@@ -101,4 +113,3 @@ function gag:count()
 end
 
 gag:init()
-if hum then hum.gag = gag end

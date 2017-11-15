@@ -68,7 +68,15 @@ function swatch:init()
             code = code,
         }
     end
-    self.log:debug("Initialized swatch module")
+    if hum then hum.swatch = swatch end
+    self.log:debug("Initialized module")
+end
+
+function swatch:unload()
+    for pat, alias in pairs(self.aliases) do
+        killAlias(alias.id)
+    end
+    self.log:debug("Unloaded module")
 end
 
 function swatch:list()
@@ -116,4 +124,3 @@ function swatch:count()
 end
 
 swatch:init()
-if hum then hum.swatch = swatch end
