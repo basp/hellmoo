@@ -13,7 +13,7 @@ The whole package consists of a variety of modules that can be used independentl
 * `mapper` is a mapper API tailored to HellMOO
 * `gag` removes lines from output completely
 
-## usage
+## quick start
 The recommended way to load modules is using the `hum` system module. First, we need to load (or *source*) this module into our client session. 
 ```
 > lua dofile([[/scripts/hellmoo/hum.lua]])
@@ -63,4 +63,14 @@ ticker                           true
 gag                              false
 ```
 
-Also you should be able to see the module on attached to the `hum` object and available as the global `ticker` object as well. You can inspect thise by using the `lua` alias.
+Also you should be able to see the module on attached to the `hum` object and available as the global `ticker` object as well. You can inspect these by using the `lua` alias.
+
+## loader module
+This module is responsible for loading additional modules and offering a convenient discovery point.
+
+* `hum load {<module>}` load an individual module
+* `hum load all` load all available modules
+* `hum list` list module info
+* `hum help` show the helpfile for this module
+
+To read more about the `hum` module you can always execute `hum` (or `hum help`) after loading it.
