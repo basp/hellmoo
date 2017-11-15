@@ -65,7 +65,7 @@ gag                              false
 
 Also you should be able to see the module on attached to the `hum` object and available as the global `ticker` object as well. You can inspect these by using the `lua` alias.
 
-## loader module
+## hum (loader) module
 This module is responsible for loading additional modules and offering a convenient discovery point.
 
 * `hum load {<module>}` load an individual module
