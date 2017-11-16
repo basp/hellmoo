@@ -15,30 +15,30 @@ end
 
 function hum.Logger:fwrite(level, msg, ...)
     msg = string.format(msg, unpack(arg))
-    cecho(string.format("[ %s ] %s: %s\n", level, self.name, msg))
+    cecho(string.format("[ %s ] (%s) %s\n", self.name, level, msg))
 end
 
 function hum.Logger:info(msg, ...)
-    self:fwrite("INFO", msg, unpack(arg))
+    self:fwrite("info", msg, unpack(arg))
 end
 
 function hum.Logger:debug(msg, ...)
-    self:fwrite("DEBUG", msg, unpack(arg))
+    self:fwrite("debug", msg, unpack(arg))
 end
 
 function hum.Logger:warn(msg, ...)
-    self:fwrite("WARN", msg, unpack(arg))
+    self:fwrite("warn", msg, unpack(arg))
 end
 
 function hum.Logger:error(msg, ...)
-    self:fwrite("ERROR", msg, unpack(arg))
+    self:fwrite("error", msg, unpack(arg))
 end
 
 function hum.Logger:fatal(msg, ...)
-    self:fwrite("FATAL", msg, unpack(arg))
+    self:fwrite("fatal", msg, unpack(arg))
 end
 
-hum.log = hum.Logger:new{name = "hum"}
+hum.log = hum.Logger:new{name = "HUM"}
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>   

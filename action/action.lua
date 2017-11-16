@@ -1,7 +1,7 @@
 action = action or {}
 
 action.actions = action.actions or {}
-action.log = action.log or hum.Logger:new{name = "action"}
+action.log = action.log or hum.Logger:new{name = "ACTION"}
 action.aliases = action.aliases or {}
 
 local function eval(code)

@@ -1,7 +1,7 @@
 swatch = swatch or {}
 
 swatch.swatches = swatch.swatches or {}
-swatch.log = swatch.log or hum.Logger:new{name = "swatch"}
+swatch.log = swatch.log or hum.Logger:new{name = "SWATCH"}
 swatch.aliases = swatch.aliases or {}
 
 local help = [=[

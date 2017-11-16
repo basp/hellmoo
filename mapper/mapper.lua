@@ -2,7 +2,7 @@ mudlet = mudlet or {}; mudlet.mapper_script = true;
 
 mapper = mapper or {}
 
-mapper.log = mapper.log or hum.Logger:new{name = "mapper"}
+mapper.log = mapper.log or hum.Logger:new{name = "MAPPER"}
 
 mapper.flags = {
     static = true,

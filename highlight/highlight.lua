@@ -1,5 +1,5 @@
 highlight = highlight or {}
-highlight.log = highlight.log or hum.Logger:new{name = "highlight"}
+highlight.log = highlight.log or hum.Logger:new{name = "HIGHLIGHT"}
 highlight.highlights = highlight.highlights or {}
 highlight.aliases = highlight.aliases or {}
 

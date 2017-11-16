@@ -1,7 +1,7 @@
 ticker = ticker or {}
 
 ticker.tickers = ticker.tickers or {}
-ticker.log = ticker.log or hum.Logger:new{name = "ticker"}
+ticker.log = ticker.log or hum.Logger:new{name = "TICKER"}
 ticker.aliases = ticker.aliases or {}
 
 local function eval(code)
