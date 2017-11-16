@@ -1,4 +1,3 @@
--- Make sure to set the path below to your clone location
 local base = [[d:/dev/hellmoo]]
 
 hum = hum or {}
