@@ -1,23 +1,62 @@
-## action module
-Setting up *triggers* or *actions* in **Mudlet** is not that easy. The Lua API is not bad but especially with *temp triggers* it's easy to lose track of them. It often happens that you're doing things in game and you suddenly think of a cool trigger to setup. This is not that easy in **Mudlet** as it involves going into the script UI or use the somewhat cumbersome `lua` command to execute bare Lua code and interface with the API from your command line.
+## SUMMARY
+Actions execute some piece of code whenever a particular pattern of text is 
+received from the game. They are generally useful to automate a variety of
+repetative tasks.
 
-The `action` module tries to remedy this by offering you a convenient way to setup ad-hoc triggers, keep track of them and destroy them once they are no longer needed. This module is inspired by **TinTin++** as well.
+Actions are equivalent to triggers you define in the Mudlet UI, they are far 
+more lightweight and transient though and are meant to be more of an ad-hoc
+alternative to using the default Mudlet triggers.
 
-### reference
-* `:create(pattern, code)` creates a new *action* to execude `code` on the `pattern` regexp.
-* `:destroy(pattern)` destroys the *action* associated with `pattern`
-* `:list()` lists all action definitions
-
-Note that (in contrast to *tickers*) the code is raw Lua code to be executed. So if you wanna send commands to the game you'll have to use the `send` function as demonstrated below:
+## ALIASES
 ```
-action:create([[^The thing dies!$]], [[send("cut skin from thing")]])
-```
-
-If you want to make use of matches things get a bit more clunky though:
-```
-action:create([[^The (.+) dies!$]], [[send("cut skin from "..matches[2])]])
+action {<pattern>} {<code>}             create a new action
+unaction <pattern>                      destroy an existing action
+actions                                 list all existing actions
+action help                             show this help
 ```
 
-The `matches` object contains all the groups that we matched (the stuff in between the round brackets `(` and `)`) but we have to remember that it also contains the complete match in `matches[1]`. Therefor, if we match groups using the round brackets our first match will be in `matches[2]`. 
+## EXAMPLES
+This will create an action that executes the "say hi" command every time 
+36Tonya is standing in the room:
+```
+action {^36Tonya is standing here} {send("say Hi!")}
+```
 
-Complicated? Yes. Unfriendly? Yes that as well but a solutioin for this is on the TODO list.
+Using captures is a bit iffy as we're executing Lua code directly. To make the
+above trigger more generic we could rewrite it:
+```
+action {^(.+) is standing here} {send("say Hi "..matches[2].."!")}
+```
+
+This would trigger on "Foo Bar is standing here." and send the command 
+"say Hi Foo Bar!". 
+
+We can destroy an action by using the pattern by which we defined it:
+```
+unaction {^(.+) is standing here}
+```
+
+You can overwrite actions by using the same pattern. This will kill the old 
+trigger and create a new one with the new code.
+
+Sometimes your action triggers might not easily fit in the truncated action
+listing. In order to destroy the action you need the pattern though so in order
+to find out all the information about an action you can always use the info
+command:
+```
+action info <id>
+```
+
+This will show you all the details of the action with specified id and this
+includes the full pattern you can use to destroy it.
+
+## REMARKS
+Test your actions first with client-side output instead of sending commands 
+straight back to the game and potentially causing a feedback loop.
+
+While using actions or triggers is really on the wrists, you'll have to be
+careful that you operate within the rules of the game you're playing.
+
+Also be very careful with actions, if you create an action that triggers on
+the output it causes you'll quickly enter an action loop. This is bad for
+the server and might even get you banned so BE CAREFUL!

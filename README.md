@@ -14,6 +14,8 @@ The whole package consists of a variety of modules that can be used together ind
 * `mapper` is a mapper API tailored to HellMOO
 * `gag` removes lines from output completely
 
+Check out each module's subfolder for specific information about that module.
+
 ## quick start
 The recommended way to load modules is using the `hum` system module. First, we need to load (or *source*) this module into our client session. 
 ```
