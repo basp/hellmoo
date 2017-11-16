@@ -124,4 +124,3 @@ function hum:list()
 end
 
 hum:init()
-hum.log:info("Ready.")
