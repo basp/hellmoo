@@ -12,6 +12,7 @@ The whole package consists of a variety of modules that can be used together ind
 * `ticker` executes code on regular intervals
 * `action` triggers code on patterns of output
 * `mapper` is a mapper API tailored to HellMOO
+* `highlight` makes it easier to create highlights on the fly
 * `gag` removes lines from output completely
 
 Check out each module's subfolder for specific information about that module.
@@ -42,6 +43,7 @@ action                           false
 delay                            false 
 swatch                           false 
 ticker                           false 
+highlight                        false
 gag                              false
 ```
 
@@ -63,6 +65,7 @@ action                           false
 delay                            false 
 swatch                           false 
 ticker                           true 
+highlight                        false
 gag                              false
 ```
 
