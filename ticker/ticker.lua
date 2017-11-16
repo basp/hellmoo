@@ -1,12 +1,8 @@
 ticker = ticker or {}
 
 ticker.tickers = ticker.tickers or {}
-ticker.log = ticker.log or {}
+ticker.log = ticker.log or hum.Logger:new{name = "ticker"}
 ticker.aliases = ticker.aliases or {}
-
-local function notify(color, msg)
-    cecho("<"..color..">[ TICKER ] <reset>"..msg.."\n")
-end
 
 local function eval(code)
     local f, e = loadstring("return "..code)
@@ -16,21 +12,6 @@ local function eval(code)
     
     local r = f()
     if r ~= nil then display(r) end
-end
-
-function ticker.log:info(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
-
-function ticker.log:debug(msg)
-    local color = "yellow"
-    notify(color, msg)    
-end
-
-function ticker.log:warn(msg)
-    local color = "yellow"
-    notify(color, msg)
 end
 
 local help = [=[

@@ -1,26 +1,7 @@
 highlight = highlight or {}
-highlight.log = highlight.log or {}
+highlight.log = highlight.log or hum.Logger:new{name = "highlight"}
 highlight.highlights = highlight.highlights or {}
 highlight.aliases = highlight.aliases or {}
-
-local function notify(color, msg)
-    cecho("<"..color..">[ HIGHLIGHT ] <reset>"..msg.."\n")
-end
-
-function highlight.log:info(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
-
-function highlight.log:debug(msg)
-    local color = "yellow"
-    notify(color, msg)    
-end
-
-function highlight.log:warn(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>

@@ -1,26 +1,7 @@
 gag = gag or {}
 gag.gags = gag.gags or {}
-gag.log = gag.log or {}
+gag.log = gag.log or hum.Logger:new{name = "gag"}
 gag.aliases = gag.aliases or {}
-
-local function notify(color, msg)
-    cecho("<"..color..">[ GAG ] <reset>"..msg.."\n")
-end
-
-function gag.log:info(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
-
-function gag.log:debug(msg)
-    local color = "yellow"
-    notify(color, msg)    
-end
-
-function gag.log:warn(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>

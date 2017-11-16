@@ -3,22 +3,43 @@ local base = [[d:/dev/hellmoo]]
 
 hum = hum or {}
 hum.base = hum.base or base
-hum.log = hum.log or {}
 hum.aliases = hum.aliases or {}
 
-local function notify(color, msg)
-    cecho("<"..color..">[ HUM ] <reset>"..msg.."\n")
+hum.Logger = {}
+
+function hum.Logger:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    return o
 end
 
-function hum.log:info(message)
-    local color = "cyan"
-    notify(color, message)
+function hum.Logger:fwrite(level, msg, ...)
+    msg = string.format(msg, unpack(arg))
+    cecho(string.format("[ %s ] %s: %s\n", level, self.name, msg))
 end
 
-function hum.log:debug(message)
-    local color = "steel_blue"
-    notify(color, message)
+function hum.Logger:info(msg, ...)
+    self:fwrite("INFO", msg, unpack(arg))
 end
+
+function hum.Logger:debug(msg, ...)
+    self:fwrite("DEBUG", msg, unpack(arg))
+end
+
+function hum.Logger:warn(msg, ...)
+    self:fwrite("WARN", msg, unpack(arg))
+end
+
+function hum.Logger:error(msg, ...)
+    self:fwrite("ERROR", msg, unpack(arg))
+end
+
+function hum.Logger:fatal(msg, ...)
+    self:fwrite("FATAL", msg, unpack(arg))
+end
+
+hum.log = hum.Logger:new{name = "hum"}
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>   

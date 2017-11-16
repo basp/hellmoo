@@ -2,40 +2,12 @@ mudlet = mudlet or {}; mudlet.mapper_script = true;
 
 mapper = mapper or {}
 
-mapper.log = {}
+mapper.log = mapper.log or hum.Logger:new{name = "mapper"}
 
 mapper.flags = {
     static = true,
     nofollow = true,
 }
-
-local function notify(color, level, msg)
-    cecho("<"..color..">[ MAPPER ] <reset>"..msg.."\n")
-end
-
-function mapper.log:debug(msg)
-    local color = "dark_slate_blue"
-    local level = "debug"
-    notify(color, level, msg)
-end
-
-function mapper.log:info(msg)
-    local color = "LightSteelBlue"
-    local level = "info"
-    notify(color, level, msg)
-end
-
-function mapper.log:warn(msg)
-    local color = "yellow"
-    local level = "warn"
-    notify(color, level, msg)
-end
-
-function mapper.log:error(msg)
-    local color = "red"
-    local level = "error"
-    notify(color, level, msg)
-end
 
 local exitmap = {
     n           = "north",        

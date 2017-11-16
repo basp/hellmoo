@@ -1,12 +1,8 @@
 delay = delay or {}
 
 delay.delays = delay.delays or {}
-delay.log = delay.log or {}
+delay.log = delay.log or hum.Logger:new{name = "delay"}
 delay.aliases = delay.aliases or {}
-
-local function notify(color, msg)
-    cecho("<"..color..">[ DELAY ] <reset>"..msg.."\n")
-end
 
 local function eval(code)
     local f, e = loadstring("return "..code)
@@ -15,21 +11,6 @@ local function eval(code)
     end
     local r = f()
     if r ~= nil then display(r) end
-end
-
-function delay.log:info(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
-
-function delay.log:debug(msg)
-    local color = "yellow"
-    notify(color, msg)    
-end
-
-function delay.log:warn(msg)
-    local color = "yellow"
-    notify(color, msg)
 end
 
 local help = [=[

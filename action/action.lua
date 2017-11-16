@@ -1,12 +1,8 @@
 action = action or {}
 
 action.actions = action.actions or {}
-action.log = action.log or {}
+action.log = action.log or hum.Logger:new{name = "action"}
 action.aliases = action.aliases or {}
-
-local function notify(color, msg)
-    cecho("<"..color..">[ ACTION ] <reset>"..msg.."\n")
-end
 
 local function eval(code)
     local f, e = loadstring("return "..code)
@@ -16,21 +12,6 @@ local function eval(code)
     
     local r = f()
     if r ~= nil then display(r) end
-end
-
-function action.log:info(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
-
-function action.log:debug(msg)
-    local color = "yellow"
-    notify(color, msg)    
-end
-
-function action.log:warn(msg)
-    local color = "yellow"
-    notify(color, msg)
 end
 
 local help = [[

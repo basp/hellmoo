@@ -1,27 +1,8 @@
 swatch = swatch or {}
 
 swatch.swatches = swatch.swatches or {}
-swatch.log = swatch.log or {}
+swatch.log = swatch.log or hum.Logger:new{name = "swatch"}
 swatch.aliases = swatch.aliases or {}
-
-local function notify(color, msg)
-    cecho("<"..color..">[ SWATCH ] <reset>"..msg.."\n")
-end
-
-function swatch.log:info(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
-
-function swatch.log:debug(msg)
-    local color = "yellow"
-    notify(color, msg)    
-end
-
-function swatch.log:warn(msg)
-    local color = "yellow"
-    notify(color, msg)
-end
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>
