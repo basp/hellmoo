@@ -69,7 +69,7 @@ end
 
 local aliases = {
     ["^hum load \\{(.+)\\}$"] = [[hum:load(matches[2])]],
-    ["^hum loadall$"] = [[hum:loadall()]],
+    ["^hum load all$"] = [[hum:loadall()]],
     ["^hum help$"] = [[hum:help()]],
     ["^hum list$"] = [[hum:list()]],
     ["^hum$"] = [[hum:help()]],
