@@ -1,7 +1,7 @@
 swatch = swatch or {}
 swatch.swatches = swatch.swatches or {}
 swatch.aliases = swatch.aliases or {}
-swatch.log = hum.Logger:new{name = "SWATCH"}
+swatch.log = hum.Logger:new{name = "SWA"}
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>

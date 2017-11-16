@@ -102,6 +102,7 @@ local modules = {
     "ticker",
     "gag",
     "highlight",
+    "mapper",
 }
 
 function hum:loadall()
