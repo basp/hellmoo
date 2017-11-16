@@ -6,6 +6,14 @@ hum.aliases = hum.aliases or {}
 
 hum.Logger = {}
 
+hum.Logger.colors = {
+    info = "LightSteelBlue",
+    debug = "SkyBlue",
+    warn = "yellow",
+    error = "orange",
+    fatal = "red",
+}
+
 function hum.Logger:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -14,8 +22,9 @@ function hum.Logger:new(o)
 end
 
 function hum.Logger:fwrite(level, msg, ...)
+    local color = self.colors[level]
     msg = string.format(msg, unpack(arg))
-    cecho(string.format("[ %s ] (%s) %s\n", self.name, level, msg))
+    cecho(string.format("<green>[ %s ]<reset> <%s>(%s)<reset> %s\n", self.name, color, level, msg))
 end
 
 function hum.Logger:info(msg, ...)

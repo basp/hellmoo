@@ -1,7 +1,7 @@
 highlight = highlight or {}
-highlight.log = highlight.log or hum.Logger:new{name = "HIGHLIGHT"}
 highlight.highlights = highlight.highlights or {}
 highlight.aliases = highlight.aliases or {}
+highlight.log = hum.Logger:new{name = "HIGHLIGHT"}
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>

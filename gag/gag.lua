@@ -1,7 +1,7 @@
 gag = gag or {}
 gag.gags = gag.gags or {}
-gag.log = gag.log or hum.Logger:new{name = "GAG"}
 gag.aliases = gag.aliases or {}
+gag.log = hum.Logger:new{name = "GAG"}
 
 local help = [=[
 <magenta>--------------------------------------------------------------------------------<reset>

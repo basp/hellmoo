@@ -1,8 +1,7 @@
 delay = delay or {}
-
 delay.delays = delay.delays or {}
-delay.log = delay.log or hum.Logger:new{name = "DELAY"}
 delay.aliases = delay.aliases or {}
+delay.log = hum.Logger:new{name = "DELAY"}
 
 local function eval(code)
     local f, e = loadstring("return "..code)
