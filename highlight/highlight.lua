@@ -90,14 +90,14 @@ function highlight:create(pattern, fg, bg)
              resetFormat()
          ]], fg, bg))
      }
-     self.log:info(string.format("Ok, pattern '%s' will now highlight with %s fg and %s bg", pattern, fg, bg))
+     self.log:info("Ok, pattern '%s' will now highlight with %s fg and %s bg", pattern, fg, bg)
 end
 
 function highlight:destroy(pattern)
     if not self.highlights[pattern] then return end
     killTrigger(self.highlights[pattern].id)
     self.highlights[pattern] = nil
-    self.log:info(string.format("Ok, highlight '%s' is no more", pattern))
+    self.log:info("Ok, highlight '%s' is no more", pattern)
 end
 
 function highlight:list()

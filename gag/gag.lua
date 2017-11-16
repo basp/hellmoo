@@ -63,14 +63,14 @@ function gag:create(pattern)
             deleteLine()
         end)
     }
-    self.log:info(string.format("Ok, all lines containing '%s' will now be gagged", pattern))
+    self.log:info("Ok, all lines containing '%s' will now be gagged", pattern)
 end
 
 function gag:destroy(pattern)
     if not self.gags[pattern] then return end
     killTrigger(self.gags[pattern].id)
     self.gags[pattern] = nil
-    self.log:info(string.format("Ok, lines containing '%s' will no longer be gagged", pattern))
+    self.log:info("Ok, lines containing '%s' will no longer be gagged", pattern)
 end
 
 function gag:list()

@@ -81,9 +81,9 @@ end
 
 function hum:load(module)
     local file = string.format("%s/%s/%s.lua", self.base, module, module)
-    hum.log:debug(string.format("Loading %s...", file))
+    hum.log:debug("Loading %s...", file)
     dofile(file)
-    hum.log:debug(string.format("Ok, loaded module %s", file))
+    hum.log:debug("Ok, loaded module %s", file)
 end
 
 local modules = {

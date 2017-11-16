@@ -93,11 +93,11 @@ end
 
 function ticker:create(name, code, seconds)
     if self.tickers[name] then
-        self.log:debug(string.format("Killing existing ticker %s", name))
+        self.log:debug("Killing existing ticker %s", name)
         killTimer(self.tickers[name].id)
     end
     self:_c(name, code, seconds)
-    self.log:info(string.format("Ok, %s now executes '%s' every %d seconds", name, code, seconds))
+    self.log:info("Ok, %s now executes '%s' every %d seconds", name, code, seconds)
 end
 
 function ticker:list()
@@ -119,7 +119,7 @@ function ticker:destroy(name)
     local id = self.tickers[name].id
     killTimer(id)
     self.tickers[name] = nil
-    self.log:info(string.format("Ok, %s is no longer a ticker", name))
+    self.log:info("Ok, %s is no longer a ticker", name)
 end
 
 function ticker:count()

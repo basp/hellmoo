@@ -117,7 +117,7 @@ function delay:create(seconds, code)
             self.delays[code] = nil
         end),
     }
-    self.log:info(string.format("Ok, in %d seconds '%s' is executed", seconds, code))
+    self.log:info("Ok, in %d seconds '%s' is executed", seconds, code)
 end
 
 function delay:count()
@@ -132,7 +132,7 @@ function delay:destroy(code)
     if not self.delays[code] then return end
     killTimer(self.delays[code].id)
     self.delays[code] = nil
-    self.log:info(string.format("Ok, delay '%s' is no more", code))
+    self.log:info("Ok, delay '%s' is no more", code)
 end
 
 delay:init()
