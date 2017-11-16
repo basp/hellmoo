@@ -10,7 +10,7 @@ alternative to using the default Mudlet triggers.
 ## ALIASES
 ```
 action {<pattern>} {<code>}             create a new action
-unaction <pattern>                      destroy an existing action
+unaction {<pattern>}                    destroy an existing action
 actions                                 list all existing actions
 action help                             show this help
 ```
