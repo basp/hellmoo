@@ -69,7 +69,7 @@ function swatch:list()
     local now = os.time()
     for name, start in pairs(self.swatches) do
         local dur = now - start
-        cecho(string.format("%5d %-64s %5d\n", 0, name, dur))
+        cecho(string.format("%5d %-64s %5d\n", 0, name:cut(64), dur))
     end
 end
 

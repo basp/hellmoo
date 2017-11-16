@@ -108,7 +108,7 @@ function highlight:list()
 
     cecho(string.format("<yellow>%5s %-32s %-16s %-16s<reset>\n", "id", "pattern", "fg", "bg"))
     for pat, hl in pairs(self.highlights) do
-        cecho(string.format("%5d %-32s %-16s %-16s\n", hl.id, pat, hl.fg, hl.bg))
+        cecho(string.format("%5d %-32s %-16s %-16s\n", hl.id, pat:cut(32), hl.fg:cut(16), hl.bg:cut(16)))
     end
 end
 
@@ -119,3 +119,5 @@ function highlight:count()
     end
     return c
 end
+
+highlight:init()

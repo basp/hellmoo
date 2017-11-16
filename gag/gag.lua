@@ -81,7 +81,7 @@ function gag:list()
 
     cecho(string.format("<yellow>%5s %-64s<reset>\n", "id", "pattern"))
     for pat, gag in pairs(self.gags) do
-        cecho(string.format("%5d %-64s\n", gag.id, pat))
+        cecho(string.format("%5d %-64s\n", gag.id, pat:cut(64)))
     end
 end
 

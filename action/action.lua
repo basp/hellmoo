@@ -84,10 +84,24 @@ function action:help()
 end
 
 local aliases = {
-
+    ["^action \\{(.+)\\} \\{(.+)\\}$"] = [[action:create(matches[2], matches[3])]],
+    ["^unaction \\{(.+)\\}$"] = [[action:destroy(matches[2])]],
+    ["^actions$"] = [[action:list()]],
+    ["^action info (\\d+)$"] = [[action:info(tonumber(matches[2]))]],
+    ["^action help$"] = [[action:help()]],
+    ["^action$"] = [[action:help()]],
 }
 
 function action:init()
+    for pat, code in pairs(aliases) do
+        if self.aliases[pat] then
+            killAlias(self.aliases[pat].id)
+        end
+        self.aliases[pat] = {
+            id = tempAlias(pat, code),
+            code = code,
+        }
+    end
     if hum then hum.action = action end
     self.log:debug("Initialized module")
 end
@@ -103,23 +117,22 @@ function action:create(pattern, code)
     if self.actions[pattern] then
         local existing = self.actions[pattern].id
         killTrigger(existing)
-        self.log:debug(string.format("Killing existing trigger with id %d", existing))
-        self.log:debug(string.format("Overwriting exiting action for '%s'", pattern))
+        self.log:debug("Killing existing trigger with id %d", existing)
+        self.log:debug("Overwriting exiting action for '%s'", pattern)
     end
 
     self.actions[pattern] = {
         code = code,
         id = tempRegexTrigger(pattern, code),
     }
-    local msg = string.format("Ok, will execute `%s` on trigger '%s'", code, pattern)
-    self.log:info(msg)
+    self.log:info("Ok, will execute `%s` on trigger '%s'", code, pattern)
 end
 
 function action:destroy(pattern)
     local id = self.actions[pattern].id
     killTrigger(id)
     self.actions[pattern] = nil
-    self.log:info(string.format("Ok, Trigger '%s' is no more", pattern))
+    self.log:info("Ok, Trigger '%s' is no more", pattern)
 end
 
 function action:info(id)
@@ -131,7 +144,7 @@ function action:info(id)
             return
         end
     end
-    self.log:info(string.format("There's no action with id %d", id))
+    self.log:info("There's no action with id %d", id)
 end
 
 function action:count()
@@ -150,7 +163,7 @@ function action:list()
 
     cecho(string.format("<yellow>%5s %-24s %s<reset>\n", "id", "pattern", "code"))
     for pat, act in pairs(self.actions) do
-        cecho(string.format("%5d %-24s %s\n", act.id, pat:cut(24), act.code:cut(32)))
+        cecho(string.format("%5d %-24s %s\n", act.id, pat:cut(24), act.code))
     end
 end
 

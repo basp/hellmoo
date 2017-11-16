@@ -109,7 +109,7 @@ function ticker:list()
     local now = os.time()
     for name, t in pairs(self.tickers) do
         local tte = t.seconds - (now - t.start)
-        cecho(string.format("%5d %-24s %-39s %5d %5d\n", t.id, name:cut(24), t.code:cut(48), t.seconds, tte))
+        cecho(string.format("%5d %-24s %-39s %5d %5d\n", t.id, name:cut(24), t.code:cut(39), t.seconds, tte))
     end
 end
 

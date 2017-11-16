@@ -101,6 +101,7 @@ local modules = {
     "swatch",
     "ticker",
     "gag",
+    "highlight",
 }
 
 function hum:loadall()
