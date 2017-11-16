@@ -147,11 +147,11 @@ function delay:count()
     return c
 end
 
-function delay:destroy(id)
-    if not self.delays[id] then return end
-    killTimer(id)
-    self.delays[id] = nil
-    self.log:info(string.format("Ok, delay '%s' is no more", id))
+function delay:destroy(code)
+    if not self.delays[code] then return end
+    killTimer(self.delays[code].id)
+    self.delays[code] = nil
+    self.log:info(string.format("Ok, delay '%s' is no more", code))
 end
 
 delay:init()
