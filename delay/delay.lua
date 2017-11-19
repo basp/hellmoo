@@ -63,7 +63,7 @@ end
 
 local aliases = {
     ["^delay \\{(\\d+)\\} \\{(.+)\\}$"] = [[delay:create(tonumber(matches[2]), matches[3])]],
-    ["^undelay \\{(\\d+)\\}$"] = [[delay:destroy(tonumber(matches[2])]],
+    ["^undelay \\{(\\d+)\\}$"] = [[delay:destroy(tonumber(matches[2]))]],
     ["^delays$"] = [[delay:list()]],
     ["^delay help$"] = [[delay:help()]],
     ["^delay$"] = [[delay:help()]],
